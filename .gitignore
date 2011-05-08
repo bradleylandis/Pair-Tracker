@@ -1,0 +1,12 @@
+*.suo
+
+*.user
+
+*.cache
+
+[Bb]in/
+
+obj/
+
+App_Data/
+specresults/
