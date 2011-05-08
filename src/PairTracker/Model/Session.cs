@@ -21,9 +21,17 @@ namespace PairTracker.Model
         protected Programmer programmer1;
         protected Programmer programmer2;
 
-        public DateTime StartTime { get { return intervals.First().StartTime; } }
-        public DateTime EndTime { get { return intervals.Last().EndTime; } }
-        public TimeSpan SessionLength { get { return EndTime - StartTime; } }
+        public TimeSpan Length 
+        { 
+            get 
+            { 
+                TimeSpan length = new TimeSpan();
+                foreach (var interval in Intervals)
+                    length += interval.Length;
+
+                return length;
+            } 
+        }
 
         protected IList<Interval> intervals;
         public IEnumerable<Interval> Intervals { get { return intervals; } }
@@ -39,7 +47,17 @@ namespace PairTracker.Model
 
             StartNewInterval(Programmer.Neither);
         }
-        
+
+        public void Pause()
+        {
+            StopCurrentInterval();
+        }
+
+        public void Continue()
+        {
+            StartNewInterval(Programmer.Neither);
+        }
+
         public void Stop() {
             StopCurrentInterval();
         }
@@ -54,6 +72,7 @@ namespace PairTracker.Model
         {
             CurrentInterval.Stop();
             intervals.Add(CurrentInterval);
+            CurrentInterval = null;
         }
 
         public void SwitchController(Programmer programmer)
@@ -63,6 +82,11 @@ namespace PairTracker.Model
                 StopCurrentInterval();
                 StartNewInterval(programmer);
             }
+        }
+
+        public override string ToString()
+        {
+            return string.Format("Programmer 1: {0} Programmer 2: {1} Length: {2} Number of Intervals {3}", programmer1, programmer2, Length, Intervals.Count());
         }
     }
 }

@@ -5,6 +5,7 @@ using System.Text;
 using NUnit.Framework;
 using PairTracker.Model;
 using Moq;
+using PairTracker.UnitTests.TestDoubles;
 
 namespace PairTracker.UnitTests.ModelTests
 {
@@ -12,23 +13,51 @@ namespace PairTracker.UnitTests.ModelTests
     public class SesssionTests
     {
         [Test]
-        public void StartSetsTheStartTime()
+        public void LengthAddsUpLengthOfAllTheIntervals()
         {
-            Programmer programmer1 = new Programmer("Joe");
-            Programmer programmer2 = new Programmer("Bob");
+            var intervals = new List<Interval>();
+            intervals.Add(new TestInterval(new DateTime(), new TimeSpan(0, 0, 1), null));
+            intervals.Add(new TestInterval(new DateTime(), new TimeSpan(0, 0, 1), null));
 
-            var time = DateTime.Now;
+            var session = new TestSession(null, null, intervals);
+            
+            Assert.That(session.Length.TotalSeconds, Is.EqualTo(2));
+        }
 
-            var mockClock = new Mock<Clock>();
+        [Test]
+        public void PauseStopsCurrentIntervalButDoesntAddANewInterval()
+        {
+            var session = new Session(new IntervalFactory(new DateTimeClock()));
 
-            mockClock.Setup(c => c.Now).Returns(time);
+            session.Start(new Programmer("Joe"), new Programmer("Bob"));
+            session.Pause();
 
-            var session = new Session(new IntervalFactory(mockClock.Object));
+            Assert.That(session.Intervals.Count(), Is.EqualTo(1));
+            Assert.That(session.CurrentInterval, Is.Null);
+        }
 
-            session.Start(programmer1, programmer2);
+        [Test]
+        public void ContinueStartsANewInterval()
+        {
+            var session = new Session(new IntervalFactory(new DateTimeClock()));
+
+            session.Start(new Programmer("Joe"), new Programmer("Bob"));
+            session.Pause();
+            session.Continue();
+
+            Assert.That(session.Intervals.Count(), Is.EqualTo(1));
+            Assert.That(session.CurrentInterval, Is.Not.Null);
+        }
+
+        [Test]
+        public void ToStringContainsProgrammer1Name()
+        {
+            var programmerName = "Joe";
+            var session = new Session(new IntervalFactory(new DateTimeClock()));
+            session.Start(new Programmer(programmerName), new Programmer("Bob"));
             session.Stop();
 
-            Assert.That(session.StartTime, Is.EqualTo(time));
+            Assert.That(session.ToString(), Contains.Substring(programmerName));
         }
     }
 }

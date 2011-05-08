@@ -28,7 +28,7 @@ namespace PairTracker.Model
 
         public override string ToString()
         {
-            return string.Format("Programmmer: {0} Length: {1} seconds Start Time: {2} End Time: {3}", Programmer.Name, Length.TotalSeconds, StartTime, EndTime);
+            return string.Format("Programmmer: {0} Length: {1} Start Time: {2} End Time: {3}", Programmer.Name, Length, StartTime, EndTime);
         }
     }
 }
