@@ -54,6 +54,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Builders\PairTrackerPresenterBuilder.cs" />
     <Compile Include="ModelTests\IntervalTests.cs" />
     <Compile Include="ModelTests\SessionPercentageStatisticGeneratorTests.cs" />
     <Compile Include="ModelTests\SesssionTests.cs" />

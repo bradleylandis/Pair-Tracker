@@ -9,11 +9,13 @@ namespace PairTracker.Presenter
     {
         public PairTrackerView view { get; private set; }
         Session model;
+        SessionPercentageStatisticGenerator statGenerator;
 
-        public PairTrackerPresenter(PairTrackerView view, Session model)
+        public PairTrackerPresenter(PairTrackerView view, Session model, SessionPercentageStatisticGenerator statGenerator)
         {
             this.view = view;
             this.model = model;
+            this.statGenerator = statGenerator;
 
             view.StartButton_Clicked += new EventHandler<StartButtonClickedEventArgs>(StartSession);
             view.StopButton_Clicked += new EventHandler<EventArgs>(EndSession);
@@ -41,9 +43,6 @@ namespace PairTracker.Presenter
 
         private void DisplayStats()
         {
-            //TODO: These should be dependencies, but I think they are going to move soon anyway
-            var statGenerator = new SessionPercentageStatisticGenerator();
-
             view.DisplayStats(statGenerator.Generate(model));
         }
 
