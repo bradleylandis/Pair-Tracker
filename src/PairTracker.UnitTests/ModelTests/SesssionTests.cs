@@ -37,13 +37,13 @@ namespace PairTracker.UnitTests.ModelTests
         }
 
         [Test]
-        public void ContinueStartsANewInterval()
+        public void ResumeStartsANewInterval()
         {
             var session = new Session(new IntervalFactory(new DateTimeClock()));
 
             session.Start(new Programmer("Joe"), new Programmer("Bob"));
             session.Pause();
-            session.Continue();
+            session.Resume();
 
             Assert.That(session.Intervals.Count(), Is.EqualTo(1));
             Assert.That(session.CurrentInterval, Is.Not.Null);

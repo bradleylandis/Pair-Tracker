@@ -10,3 +10,6 @@ obj/
 
 App_Data/
 specresults/
+partcover.driver.log
+partcover-browser-settings.xml
+temp/

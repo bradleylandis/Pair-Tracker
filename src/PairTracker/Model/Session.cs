@@ -53,7 +53,7 @@ namespace PairTracker.Model
             StopCurrentInterval();
         }
 
-        public void Continue()
+        public void Resume()
         {
             StartNewInterval(Programmer.Neither);
         }

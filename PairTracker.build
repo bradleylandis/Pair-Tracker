@@ -1,0 +1,91 @@
+<?xml version="1.0"?>
+<project name="AutoBuild" default="run">
+  <loadtasks assembly="tools\AutoBuild\nantcontrib\NAnt.Contrib.Tasks.dll" />
+
+  <property name="configuration" value="debug"/>
+  <property name="base-dir" value="${project::get-base-directory()}" />
+  <property name="tools-dir" value="${base-dir}\tools" />
+  <property name="src-dir" value="${base-dir}\src" />
+  <property name="output-dir" value="${base-dir}\Build Output" />
+  <property name="temp-dir" value="${base-dir}\temp" />
+
+  <property name="solution-file-path" value="${src-dir}\PairTracker.sln"/>
+  <property name="test-assembly-path" value="${src-dir}\PairTracker.UnitTests\bin\${configuration}\PairTracker.UnitTests.dll"/>
+
+  <property name="partcover-runner" value="partcover.exe" />
+  <property name="partcover-dir" value="${tools-dir}\partcover" />
+  
+  <property name="msbuild-runner" value="msbuild.exe" />
+  <property name="msbuild-dir" value="${tools-dir}\msbuild"/>
+
+  <property name="nunit-runner" value="nunit-console-x86.exe" />
+  <property name="nunit-dir" value="${tools-dir}\nunit" />
+
+  <property name="testdox-runner" value="testdox.exe" />
+  <property name="testdox-dir" value="${tools-dir}\testdox" />
+
+  <target name="run">
+    <call target="run-testdox"/>
+  </target>
+
+  <target name="build-solution">
+    <exec program="${msbuild-runner}"
+basedir="${msbuild-dir}"
+            workingdir="${base-dir}">
+      <arg line="/p:Configuration=${configuration}"/>
+      <arg line="&quot;${solution-file-path}&quot;"/>
+    </exec>
+  </target>
+
+  <target name="run-tests" depends="build-solution">
+    <mkdir dir="${output-dir}"/>
+    <mkdir dir="${temp-dir}"/>
+    <exec program="${nunit-runner}"
+            basedir="${nunit-dir}"
+            workingdir="${base-dir}"
+output="${temp-dir}\TestResult.txt">
+      <arg line="&quot;${test-assembly-path}&quot;"/>
+      <arg line="/xml:&quot;${temp-dir}\TestResult.xml&quot;"/>
+      <arg line="/out:&quot;${temp-dir}\out.txt&quot;"/>
+      <arg line="/err:&quot;${temp-dir}\err.txt&quot;"/>
+    </exec>
+  </target>
+
+  <target name="run-coverage" depends="run-tests">
+    <exec program="${partcover-runner}"
+            basedir="${partcover-dir}"
+            workingdir="${base-dir}">
+      <arg line="--log 0" />
+      <arg line="--target &quot;${nunit-dir}\${nunit-runner}&quot;"/>
+      <arg line="--target-work-dir &quot;${nunit-dir}&quot;"/>
+      <arg line="--target-args &quot;${test-assembly-path}&quot;"/>
+      <arg line="--output &quot;${temp-dir}\partcover.xml&quot;"/>
+      <arg line="--include [PairTracker]*" />
+    </exec>
+  </target>
+  
+  <target name="run-testdox" depends="run-coverage">
+    <exec program="${testdox-runner}"
+            basedir="${testdox-dir}"
+            workingdir="${base-dir}">
+      <arg line="/P:${src-dir}\PairTracker.UnitTests\bin\${configuration}"/>
+      <arg line="/F:PairTracker.UnitTests.dll"/>
+      <arg line="/T:&quot;Pair Tracker TestDox Analysis&quot;"/>
+      <arg line="/FV:max"/>
+      <arg line="/out:&quot;${temp-dir}&quot;"/>      
+    </exec>
+  </target>
+  
+  <target name="commit-locally" depends="run-tests">
+    <exec append="true" workingdir="${base-dir}" program="git">
+      <arg value="add" />
+      <arg path="." />
+    </exec>
+    <exec append="true" workingdir="${base-dir}" program="git">
+      <arg line="commit" />
+      <arg value="-a" />
+      <arg value="-m" />
+      <arg value="Successful build" />
+    </exec>
+  </target>
+</project>

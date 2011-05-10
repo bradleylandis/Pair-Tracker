@@ -42,7 +42,7 @@ namespace PairTracker.UI
             //TODO: How can I clean this up?
             //TODO: Associate the keyboards from config or admin menu
             Programmer controllingProgrammer = Programmer.Neither;
-            if (e.Keyboard.deviceHandle.ToString() == "65603")
+            if (e.Keyboard.deviceHandle.ToString() == "720957")
                 controllingProgrammer = programmer1;
             if (e.Keyboard.deviceHandle.ToString() == "720961")
                 controllingProgrammer = programmer2;

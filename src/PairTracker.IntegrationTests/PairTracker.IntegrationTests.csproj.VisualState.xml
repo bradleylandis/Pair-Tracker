@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<VisualState xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ShowCheckBoxes="false">
+  <TopNode>[0-1000]C:\Development\Pair-Tracker\src\PairTracker.IntegrationTests\PairTracker.IntegrationTests.csproj</TopNode>
+  <SelectedNode>[0-1004]PairTracker.IntegrationTests.Specifications.CalculateSessionLengthFeature</SelectedNode>
+  <ExcludeCategories>false</ExcludeCategories>
+  <Nodes>
+    <Node UniqueName="[0-1000]C:\Development\Pair-Tracker\src\PairTracker.IntegrationTests\PairTracker.IntegrationTests.csproj" Expanded="true" />
+    <Node UniqueName="[0-1008]C:\Development\Pair-Tracker\src\PairTracker.IntegrationTests\bin\Debug\PairTracker.IntegrationTests.dll" Expanded="true" />
+    <Node UniqueName="[0-1009]PairTracker" Expanded="true" />
+    <Node UniqueName="[0-1010]PairTracker.IntegrationTests" Expanded="true" />
+    <Node UniqueName="[0-1011]PairTracker.IntegrationTests.Specifications" Expanded="true" />
+    <Node UniqueName="[0-1004]PairTracker.IntegrationTests.Specifications.CalculateSessionLengthFeature" Expanded="true" />
+    <Node UniqueName="[0-1001]PairTracker.IntegrationTests.Specifications.SessionCaptureFeature" Expanded="true" />
+  </Nodes>
+</VisualState>

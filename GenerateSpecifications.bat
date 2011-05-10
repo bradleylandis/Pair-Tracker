@@ -1,0 +1,1 @@
+tools\specflow\specflow.exe generateall src\PairTracker.IntegrationTests\PairTracker.IntegrationTests.csproj
