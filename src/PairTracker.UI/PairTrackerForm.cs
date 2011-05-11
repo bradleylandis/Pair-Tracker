@@ -37,14 +37,22 @@ namespace PairTracker.UI
 
         Timer IntervalTimer { get; set; }
 
+        string keyboardId1 = string.Empty;
+        string keyboardId2 = string.Empty;
+
         void inputDevice_KeyPressed(object sender, InputDevice.KeyControlEventArgs e)
         {
             //TODO: How can I clean this up?
             //TODO: Associate the keyboards from config or admin menu
             Programmer controllingProgrammer = Programmer.Neither;
-            if (e.Keyboard.deviceHandle.ToString() == "720957")
+            if (string.IsNullOrEmpty(keyboardId1))
+                keyboardId1 = e.Keyboard.deviceHandle.ToString();
+            else if(string.IsNullOrEmpty(keyboardId2) && e.Keyboard.deviceHandle.ToString() != keyboardId1)
+                keyboardId2 = e.Keyboard.deviceHandle.ToString();
+
+            if (e.Keyboard.deviceHandle.ToString() == keyboardId1)
                 controllingProgrammer = programmer1;
-            if (e.Keyboard.deviceHandle.ToString() == "720961")
+            if (e.Keyboard.deviceHandle.ToString() == keyboardId2)
                 controllingProgrammer = programmer2;
 
             if (Controller_Changed != null)
