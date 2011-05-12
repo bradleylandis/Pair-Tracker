@@ -85,6 +85,13 @@ namespace PairTracker.UI
             inputDevice.KeyPressed -= handler;
             if(StopButton_Clicked != null)
                 StopButton_Clicked(this, new EventArgs());
+
+            if (IntervalTimer != null)
+            {
+                IntervalTimer.Stop();
+                IntervalTimer.Tick -= new EventHandler(IntervalTimer_Tick);
+            }
+
             tracking = false;
         }
 
