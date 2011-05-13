@@ -9,5 +9,10 @@ namespace PairTracker.UI
         {
             InitializeComponent();
         }
+
+        public new void Show()
+        {
+            this.ShowDialog();
+        }
     }
 }
