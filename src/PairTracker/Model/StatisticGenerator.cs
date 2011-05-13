@@ -2,6 +2,6 @@
 {
     public interface StatisticGenerator<T>
     {
-        T Generate(Session session);
+        T Generate(IPairingSession session);
     }
 }

@@ -35,21 +35,21 @@
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.lblControllerName = new System.Windows.Forms.ToolStripStatusLabel();
             this.SessionDetails = new System.Windows.Forms.ListView();
-            this.Stats = new System.Windows.Forms.ListView();
-            this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
             this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader3 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader4 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.Stats = new System.Windows.Forms.ListView();
             this.columnHeader5 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader6 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.label1 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.statusStrip1.SuspendLayout();
             this.menuStrip1.SuspendLayout();
@@ -57,8 +57,8 @@
             // 
             // txtProgrammerTwo
             // 
-            this.txtProgrammerTwo.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
-                        | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtProgrammerTwo.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.txtProgrammerTwo.Location = new System.Drawing.Point(85, 62);
             this.txtProgrammerTwo.Name = "txtProgrammerTwo";
             this.txtProgrammerTwo.Size = new System.Drawing.Size(305, 20);
@@ -66,8 +66,8 @@
             // 
             // txtProgrammerOne
             // 
-            this.txtProgrammerOne.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
-                        | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtProgrammerOne.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.txtProgrammerOne.Location = new System.Drawing.Point(85, 33);
             this.txtProgrammerOne.Name = "txtProgrammerOne";
             this.txtProgrammerOne.Size = new System.Drawing.Size(305, 20);
@@ -113,9 +113,9 @@
             // 
             // SessionDetails
             // 
-            this.SessionDetails.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
-                        | System.Windows.Forms.AnchorStyles.Left)
-                        | System.Windows.Forms.AnchorStyles.Right)));
+            this.SessionDetails.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.SessionDetails.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.columnHeader1,
             this.columnHeader2,
@@ -128,10 +128,30 @@
             this.SessionDetails.UseCompatibleStateImageBehavior = false;
             this.SessionDetails.View = System.Windows.Forms.View.Details;
             // 
+            // columnHeader1
+            // 
+            this.columnHeader1.Text = "Programmer";
+            this.columnHeader1.Width = 95;
+            // 
+            // columnHeader2
+            // 
+            this.columnHeader2.Text = "Start Time";
+            this.columnHeader2.Width = 85;
+            // 
+            // columnHeader3
+            // 
+            this.columnHeader3.Text = "End Time";
+            this.columnHeader3.Width = 85;
+            // 
+            // columnHeader4
+            // 
+            this.columnHeader4.Text = "Length";
+            this.columnHeader4.Width = 85;
+            // 
             // Stats
             // 
-            this.Stats.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
-                        | System.Windows.Forms.AnchorStyles.Right)));
+            this.Stats.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.Stats.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.columnHeader5,
             this.columnHeader6});
@@ -141,6 +161,16 @@
             this.Stats.TabIndex = 11;
             this.Stats.UseCompatibleStateImageBehavior = false;
             this.Stats.View = System.Windows.Forms.View.Details;
+            // 
+            // columnHeader5
+            // 
+            this.columnHeader5.Text = "Programmer";
+            this.columnHeader5.Width = 95;
+            // 
+            // columnHeader6
+            // 
+            this.columnHeader6.Text = "% of Session";
+            this.columnHeader6.Width = 79;
             // 
             // label1
             // 
@@ -178,36 +208,6 @@
             this.label4.TabIndex = 15;
             this.label4.Text = "Percentage of Session Controlled by Programmer:";
             // 
-            // columnHeader1
-            // 
-            this.columnHeader1.Text = "Programmer";
-            this.columnHeader1.Width = 95;
-            // 
-            // columnHeader2
-            // 
-            this.columnHeader2.Text = "Start Time";
-            this.columnHeader2.Width = 85;
-            // 
-            // columnHeader3
-            // 
-            this.columnHeader3.Text = "End Time";
-            this.columnHeader3.Width = 85;
-            // 
-            // columnHeader4
-            // 
-            this.columnHeader4.Text = "Length";
-            this.columnHeader4.Width = 85;
-            // 
-            // columnHeader5
-            // 
-            this.columnHeader5.Text = "Programmer";
-            this.columnHeader5.Width = 95;
-            // 
-            // columnHeader6
-            // 
-            this.columnHeader6.Text = "% of Session";
-            this.columnHeader6.Width = 79;
-            // 
             // menuStrip1
             // 
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -227,6 +227,13 @@
             this.fileToolStripMenuItem.Size = new System.Drawing.Size(37, 20);
             this.fileToolStripMenuItem.Text = "File";
             // 
+            // exitToolStripMenuItem
+            // 
+            this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
+            this.exitToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.exitToolStripMenuItem.Text = "Exit";
+            this.exitToolStripMenuItem.Click += new System.EventHandler(this.exitToolStripMenuItem_Click);
+            // 
             // helpToolStripMenuItem
             // 
             this.helpToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -235,18 +242,12 @@
             this.helpToolStripMenuItem.Size = new System.Drawing.Size(44, 20);
             this.helpToolStripMenuItem.Text = "Help";
             // 
-            // exitToolStripMenuItem
-            // 
-            this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
-            this.exitToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
-            this.exitToolStripMenuItem.Text = "Exit";
-            this.exitToolStripMenuItem.Click += new System.EventHandler(this.exitToolStripMenuItem_Click);
-            // 
             // aboutToolStripMenuItem
             // 
             this.aboutToolStripMenuItem.Name = "aboutToolStripMenuItem";
             this.aboutToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.aboutToolStripMenuItem.Text = "About";
+            this.aboutToolStripMenuItem.Click += new System.EventHandler(this.aboutToolStripMenuItem_Click);
             // 
             // PairTrackerForm
             // 

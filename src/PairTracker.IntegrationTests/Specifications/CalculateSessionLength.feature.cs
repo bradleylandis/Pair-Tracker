@@ -61,14 +61,12 @@ namespace PairTracker.IntegrationTests.Specifications
 #line 6
 this.ScenarioSetup(scenarioInfo);
 #line 7
-testRunner.Given("a new session");
+testRunner.Given("a new session has been started");
 #line 8
-testRunner.When("the session is started");
-#line 9
 testRunner.And("10 seconds elapses");
+#line 9
+testRunner.When("the session is stopped");
 #line 10
-testRunner.And("the session is stopped");
-#line 11
 testRunner.Then("the session length is 10 seconds");
 #line hidden
             testRunner.CollectScenarioErrors();
@@ -79,23 +77,21 @@ testRunner.Then("the session length is 10 seconds");
         public virtual void _2ProgrammersEachControlFor5Seconds()
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("2 programmers each control for 5 seconds", ((string[])(null)));
-#line 13
+#line 12
 this.ScenarioSetup(scenarioInfo);
+#line 13
+testRunner.Given("a new session has been started");
 #line 14
-testRunner.Given("a new session");
-#line 15
-testRunner.When("the session is started");
-#line 16
 testRunner.And("Programmer 1 takes control");
+#line 15
+testRunner.And("5 seconds elapses");
+#line 16
+testRunner.And("Programmer 2 takes control");
 #line 17
 testRunner.And("5 seconds elapses");
 #line 18
-testRunner.And("Programmer 2 takes control");
+testRunner.When("the session is stopped");
 #line 19
-testRunner.And("5 seconds elapses");
-#line 20
-testRunner.And("the session is stopped");
-#line 21
 testRunner.Then("the session length is 10 seconds");
 #line hidden
             testRunner.CollectScenarioErrors();
@@ -106,29 +102,27 @@ testRunner.Then("the session length is 10 seconds");
         public virtual void _2ProgrammersEachControlFor5SecondsWithA5SecondPauseInBetween()
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("2 programmers each control for 5 seconds with a 5 second pause in between", ((string[])(null)));
-#line 23
+#line 21
 this.ScenarioSetup(scenarioInfo);
-#line 24
-testRunner.Given("a new session");
-#line 25
-testRunner.When("the session is started");
-#line 26
+#line 22
+testRunner.Given("a new session has been started");
+#line 23
 testRunner.And("Programmer 1 takes control");
-#line 27
+#line 24
 testRunner.And("5 seconds elapses");
-#line 28
+#line 25
 testRunner.And("the session is paused");
+#line 26
+testRunner.And("5 seconds elapses");
+#line 27
+testRunner.And("the session is resumed");
+#line 28
+testRunner.And("Programmer 2 takes control");
 #line 29
 testRunner.And("5 seconds elapses");
 #line 30
-testRunner.And("the session is resumed");
+testRunner.When("the session is stopped");
 #line 31
-testRunner.And("Programmer 2 takes control");
-#line 32
-testRunner.And("5 seconds elapses");
-#line 33
-testRunner.And("the session is stopped");
-#line 34
 testRunner.Then("the session length is 10 seconds");
 #line hidden
             testRunner.CollectScenarioErrors();

@@ -5,12 +5,32 @@ using Moq;
 using PairTracker.Model;
 using System;
 using PairTracker.UnitTests.Builders;
+using PairTracker.Repository;
+using PairTracker.UnitTests.TestDoubles;
 
 namespace PairTracker.UnitTests.PresenterTests
 {
     [TestFixture]
     public class PairTrackerPresenterTests
     {
+        [Test]
+        public void StopCallsSave()
+        {
+            var programmer1 = new Programmer("Joe");
+            var programmer2 = new Programmer("Bob");
+            var stubSession = new Mock<IPairingSession>();
+
+            var stubView = new Mock<PairTrackerView>();
+            var mockRepository = new Mock<Repository<IPairingSession>>();
+
+            mockRepository.Setup(r => r.Save(stubSession.Object));
+
+            var presenter = new PairTrackerPresenterBuilder().WithView(stubView.Object).WithModel(stubSession.Object).WithRepository(mockRepository.Object).Build();
+            stubView.Raise(v => v.StopButton_Clicked += null, new EventArgs());
+
+            mockRepository.VerifyAll();
+        }
+        
         [Test]
         public void LockNameEntryGetsCalledOnTheViewWhenTheViewRaisesStartButton_Clicked()
         {

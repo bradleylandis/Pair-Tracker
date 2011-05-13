@@ -1,18 +1,23 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using PairTracker.Presenter;
+﻿using PairTracker.Presenter;
 using PairTracker.View;
 using PairTracker.Model;
+using PairTracker.Repository;
+using PairTracker.UnitTests.TestDoubles;
 
 namespace PairTracker.UnitTests.Builders
 {
     public class PairTrackerPresenterBuilder
     {
         PairTrackerView view;
-        Session model = new Session(new IntervalFactory(new DateTimeClock()));
+        IPairingSession model = new PairingSession(new IntervalFactory(new DateTimeClock()));
         SessionPercentageStatisticGenerator statGenerator = new SessionPercentageStatisticGenerator();
+        Repository<IPairingSession> repository = new TestRepository<IPairingSession>();
+
+        public PairTrackerPresenterBuilder WithRepository(Repository<IPairingSession> repository)
+        {
+            this.repository = repository;
+            return this;
+        }
 
         public PairTrackerPresenterBuilder WithView(PairTrackerView view)
         {
@@ -20,7 +25,7 @@ namespace PairTracker.UnitTests.Builders
             return this;
         }
 
-        public PairTrackerPresenterBuilder WithModel(Session model)
+        public PairTrackerPresenterBuilder WithModel(IPairingSession model)
         {
             this.model = model;
             return this;
@@ -34,7 +39,7 @@ namespace PairTracker.UnitTests.Builders
 
         public PairTrackerPresenter Build()
         {
-            return new PairTrackerPresenter(view, model, statGenerator);
+            return new PairTrackerPresenter(view, model, null, statGenerator, repository);
         }
     }
 }

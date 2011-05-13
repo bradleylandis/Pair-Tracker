@@ -2,24 +2,49 @@
 using PairTracker.View;
 using System.Collections.Generic;
 using System;
+using PairTracker.Repository;
 
 namespace PairTracker.Presenter
 {
     public class PairTrackerPresenter
     {
         public PairTrackerView view { get; private set; }
-        Session model;
+        IPairingSession model;
         SessionPercentageStatisticGenerator statGenerator;
+        Repository<IPairingSession> repository;
+        AboutPresenter aboutPresenter;
 
-        public PairTrackerPresenter(PairTrackerView view, Session model, SessionPercentageStatisticGenerator statGenerator)
+        public PairTrackerPresenter(PairTrackerView view, IPairingSession model, AboutPresenter aboutPresenter, SessionPercentageStatisticGenerator statGenerator, Repository<IPairingSession> repository)
         {
             this.view = view;
             this.model = model;
             this.statGenerator = statGenerator;
+            this.repository = repository;
+            this.aboutPresenter = aboutPresenter;
 
             view.StartButton_Clicked += new EventHandler<StartButtonClickedEventArgs>(StartSession);
             view.StopButton_Clicked += new EventHandler<EventArgs>(EndSession);
             view.Controller_Changed += new EventHandler<ControllerChangedEventArgs>(ChangeControllerHandler);
+            view.CloseButton_Clicked += new EventHandler<CloseButtonClickedEventArgs>(Close);
+            view.About_Clicked += new EventHandler<EventArgs>(ShowAbout);
+        }
+
+        private void ShowAbout(object sender, EventArgs e)
+        {
+            aboutPresenter.Show();
+        }
+
+        private void Close(object sender, CloseButtonClickedEventArgs e)
+        {
+            if (e.ConfirmationStatus == ConfirmationStatus.Confirmed || !model.IsRunning)
+            {
+                EndSession();
+                view.Close();
+            }
+            else if (e.ConfirmationStatus == ConfirmationStatus.Unknown)
+            {
+                view.ConfirmClose();
+            }
         }
 
         private void StartSession(object sender, StartButtonClickedEventArgs e) 
@@ -30,7 +55,13 @@ namespace PairTracker.Presenter
             view.DisplayIntervals(model.Intervals);
         }
 
-        private void EndSession(object sender, EventArgs e) {
+        private void EndSession(object sender, EventArgs e) 
+        { 
+            EndSession();
+        }
+
+        private void EndSession()
+        {
             model.Stop();
 
             view.ResetController();
@@ -39,6 +70,7 @@ namespace PairTracker.Presenter
             view.DisplayIntervals(model.Intervals);
 
             DisplayStats();
+            repository.Save(model);
         }
 
         private void DisplayStats()

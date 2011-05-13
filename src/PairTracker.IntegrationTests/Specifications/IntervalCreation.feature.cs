@@ -17,8 +17,8 @@ namespace PairTracker.IntegrationTests.Specifications
     [System.CodeDom.Compiler.GeneratedCodeAttribute("TechTalk.SpecFlow", "1.3.2.0")]
     [System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
     [NUnit.Framework.TestFixtureAttribute()]
-    [NUnit.Framework.DescriptionAttribute("Session Capture")]
-    public partial class SessionCaptureFeature
+    [NUnit.Framework.DescriptionAttribute("Interval Creation")]
+    public partial class IntervalCreationFeature
     {
         
         private static TechTalk.SpecFlow.ITestRunner testRunner;
@@ -30,8 +30,8 @@ namespace PairTracker.IntegrationTests.Specifications
         public virtual void FeatureSetup()
         {
             testRunner = TechTalk.SpecFlow.TestRunnerManager.GetTestRunner();
-            TechTalk.SpecFlow.FeatureInfo featureInfo = new TechTalk.SpecFlow.FeatureInfo(new System.Globalization.CultureInfo("en-US"), "Session Capture", "In order to asses how well I am pairing\r\nAs a programmer\r\nI want the system to ca" +
-                    "lculate the amount of time that I am controlling the session", ((string[])(null)));
+            TechTalk.SpecFlow.FeatureInfo featureInfo = new TechTalk.SpecFlow.FeatureInfo(new System.Globalization.CultureInfo("en-US"), "Interval Creation", "In order to asses how well I am pairing\r\nAs a programmer\r\nI want the system to cr" +
+                    "eate a new interval each time control swithes between programmers", ((string[])(null)));
             testRunner.OnFeatureStart(featureInfo);
         }
         
@@ -61,12 +61,10 @@ namespace PairTracker.IntegrationTests.Specifications
 #line 6
 this.ScenarioSetup(scenarioInfo);
 #line 7
-testRunner.Given("a new session");
+testRunner.Given("a new session has been started");
 #line 8
-testRunner.When("the session is started");
+testRunner.When("the session is stopped");
 #line 9
-testRunner.And("the session is stopped");
-#line 10
 testRunner.Then("the session contains 1 interval");
 #line hidden
             testRunner.CollectScenarioErrors();
@@ -77,17 +75,15 @@ testRunner.Then("the session contains 1 interval");
         public virtual void _1ProgrammerControlsForTheEntireSession()
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("1 programmer controls for the entire session", ((string[])(null)));
-#line 12
+#line 11
 this.ScenarioSetup(scenarioInfo);
+#line 12
+testRunner.Given("a new session has been started");
 #line 13
-testRunner.Given("a new session");
-#line 14
-testRunner.When("the session is started");
-#line 15
 testRunner.And("Programmer 1 takes control");
-#line 16
-testRunner.And("the session is stopped");
-#line 17
+#line 14
+testRunner.When("the session is stopped");
+#line 15
 testRunner.Then("the session contains 2 intervals");
 #line hidden
             testRunner.CollectScenarioErrors();

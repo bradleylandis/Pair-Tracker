@@ -31,6 +31,24 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="AsyncCtpLibrary">
+      <HintPath>..\packages\RavenDB.1.0.0.360\lib\net40\AsyncCtpLibrary.dll</HintPath>
+    </Reference>
+    <Reference Include="MissingBitsFromClientProfile">
+      <HintPath>..\packages\RavenDB.1.0.0.360\lib\net40\MissingBitsFromClientProfile.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>..\packages\Newtonsoft.Json.4.0.2\lib\net40\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="Raven.Abstractions">
+      <HintPath>..\packages\RavenDB.1.0.0.360\lib\net40\Raven.Abstractions.dll</HintPath>
+    </Reference>
+    <Reference Include="Raven.Client.Lightweight">
+      <HintPath>..\packages\RavenDB.1.0.0.360\lib\net40\Raven.Client.Lightweight.dll</HintPath>
+    </Reference>
+    <Reference Include="Raven.Json">
+      <HintPath>..\packages\RavenDB.1.0.0.360\lib\net40\Raven.Json.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -44,16 +62,26 @@
     <Compile Include="Model\DateTimeClock.cs" />
     <Compile Include="Model\Interval.cs" />
     <Compile Include="Model\IntervalFactory.cs" />
+    <Compile Include="Model\IPairingSession.cs" />
     <Compile Include="Model\Programmer.cs" />
-    <Compile Include="Model\Session.cs" />
+    <Compile Include="Model\PairingSession.cs" />
     <Compile Include="Model\SessionPercentageStatisticGenerator.cs" />
     <Compile Include="Model\StatisticFormatter.cs" />
     <Compile Include="Model\StatisticGenerator.cs" />
+    <Compile Include="Presenter\AboutPresenter.cs" />
+    <Compile Include="Repository\FileRepository.cs" />
+    <Compile Include="Repository\RavenDBRepository.cs" />
+    <Compile Include="Repository\Repository.cs" />
+    <Compile Include="View\AboutView.cs" />
     <Compile Include="View\ControllerChangedEventArgs.cs" />
     <Compile Include="View\PairTrackerView.cs" />
     <Compile Include="Presenter\PairTrackerPresenter.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="View\StartButtonClickedEventArgs.cs" />
+    <Compile Include="View\CloseButtonClickedEventArgs.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

@@ -12,29 +12,26 @@ namespace PairTracker.IntegrationTests.StepDefinitions
     [Binding]
     public class StepDefinitions
     {
-        Session session;
+        PairingSession session;
         Programmer programmer1 = new Programmer("Bradley");
         Programmer programmer2 = new Programmer("Alex");
 
-        [Given(@"a new session")]
-        public void GivenANewSession()
+        [Given(@"a new session has been started")]
+        public void GivenANewSessionHasBeenStarted()
         {
-            session = new Session(new IntervalFactory(new DateTimeClock()));
-        }
-
-        [When(@"the session is started")]
-        public void WhenTheSessionIsStarted()
-        {
+            session = new PairingSession(new IntervalFactory(new DateTimeClock()));
             session.Start(programmer1, programmer2);
         }
 
         [When(@"Programmer 1 takes control")]
+        [Given(@"Programmer 1 takes control")]
         public void WhenProgrammer1TakesControl()
         {
             session.SwitchController(programmer1);
         }
 
         [When(@"Programmer 2 takes control")]
+        [Given(@"Programmer 2 takes control")]
         public void WhenProgrammer2TakesControl()
         {
             session.SwitchController(programmer2);
@@ -53,6 +50,7 @@ namespace PairTracker.IntegrationTests.StepDefinitions
         }
 
         [When(@"(\d+) seconds elapses")]
+        [Given(@"(\d+) seconds elapses")]
         public void When_NSecondsElapses(int n)
         {
             Thread.Sleep(n * 1000);
@@ -65,12 +63,14 @@ namespace PairTracker.IntegrationTests.StepDefinitions
         }
 
         [When(@"the session is paused")]
+        [Given(@"the session is paused")]
         public void WhenTheSessionIsPaused()
         {
             session.Pause();
         }
 
         [When(@"the session is resumed")]
+        [Given(@"the session is resumed")]
         public void WhenTheSessionIsResumed()
         {
             session.Resume();

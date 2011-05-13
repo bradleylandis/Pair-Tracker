@@ -4,6 +4,7 @@ using PairTracker.Model;
 using System.Windows.Forms;
 using System;
 using System.Collections.Generic;
+using PairTracker.Presenter;
 
 namespace PairTracker.UI
 {
@@ -27,6 +28,14 @@ namespace PairTracker.UI
 
             IntervalTimer = new Timer();
             IntervalTimer.Tick += new EventHandler(IntervalTimer_Tick);
+
+            this.FormClosing += new FormClosingEventHandler(PairTrackerForm_FormClosing);
+        }
+
+        void PairTrackerForm_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            //TODO: What's the best way to handle when the user clicks on the "X"?
+            // I want it to go through the presenter so confirmation/save happens, but then how do you handle e.Cancel = true?
         }
 
         void IntervalTimer_Tick(object sender, EventArgs e)
@@ -42,8 +51,7 @@ namespace PairTracker.UI
 
         void inputDevice_KeyPressed(object sender, InputDevice.KeyControlEventArgs e)
         {
-            //TODO: How can I clean this up?
-            //TODO: Associate the keyboards from config or admin menu
+            //TODO: Send the keyboard that the input came from to the controller_changed event instead of the programmer and let the presenter figure it out
             Programmer controllingProgrammer = Programmer.Neither;
             if (string.IsNullOrEmpty(keyboardId1))
                 keyboardId1 = e.Keyboard.deviceHandle.ToString();
@@ -98,7 +106,19 @@ namespace PairTracker.UI
         public event EventHandler<StartButtonClickedEventArgs> StartButton_Clicked;
         public event EventHandler<EventArgs> StopButton_Clicked;
         public event EventHandler<ControllerChangedEventArgs> Controller_Changed;
+        public event EventHandler<CloseButtonClickedEventArgs> CloseButton_Clicked;
+        public event EventHandler<EventArgs> About_Clicked;
 
+        public void ConfirmClose()
+        {
+            var result = MessageBox.Show("A session is currently running.  Are you sure you want to close?", "Confirm Close", MessageBoxButtons.YesNo);
+            var confirmationStatus = ConfirmationStatus.NotConfirmed;
+            if (result == DialogResult.Yes)
+                confirmationStatus = ConfirmationStatus.Confirmed;
+            if (CloseButton_Clicked != null)
+                CloseButton_Clicked(this, new CloseButtonClickedEventArgs(confirmationStatus));
+        }
+        
         public void SetStartStopButtonsToStoppedMode()
         {
             btnStart.Enabled = true;
@@ -169,8 +189,14 @@ namespace PairTracker.UI
 
         private void exitToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            //TODO: Go through presenter, so he can clean up (verify before close if session is running)
-            this.Close();
+            if(CloseButton_Clicked != null)
+                CloseButton_Clicked(this, new CloseButtonClickedEventArgs(ConfirmationStatus.Unknown));
+        }
+
+        private void aboutToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (About_Clicked != null)
+                About_Clicked(this, new EventArgs());
         }
     }
 }
