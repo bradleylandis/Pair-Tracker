@@ -14,13 +14,13 @@ namespace PairTracker.UI
             Bind<PairTrackerView>().To<PairTrackerForm>();
             Bind<AboutView>().To<AboutForm>();
             Bind<Clock>().To<DateTimeClock>();
-            Bind<IPairingSession>().To<PairingSession>();
+            Bind<PairingSession>().To<PairingSessionImpl>();
 
-            //Bind<Repository<IPairingSession>>().To<FileRepository<IPairingSession>>()
-            //    .WithConstructorArgument("fileLocation", ConfigurationManager.AppSettings["fileLocation"]);
+            Bind<Repository<PairingSession>>().To<FileRepository<PairingSession>>()
+                .WithConstructorArgument("fileLocation", ConfigurationManager.AppSettings["fileLocation"]);
 
-            Bind<Repository<IPairingSession>>().To<RavenDBRepository<IPairingSession>>()
-                .WithConstructorArgument("store", Program.DocumentStore);
+            //Bind<Repository<PairingSession>>().To<RavenDBRepository<PairingSession>>()
+            //    .WithConstructorArgument("store", Program.DocumentStore);
         }
     }
 }

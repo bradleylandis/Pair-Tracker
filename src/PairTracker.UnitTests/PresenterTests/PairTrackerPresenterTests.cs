@@ -18,10 +18,10 @@ namespace PairTracker.UnitTests.PresenterTests
         {
             var programmer1 = new Programmer("Joe");
             var programmer2 = new Programmer("Bob");
-            var stubSession = new Mock<IPairingSession>();
+            var stubSession = new Mock<PairingSession>();
 
             var stubView = new Mock<PairTrackerView>();
-            var mockRepository = new Mock<Repository<IPairingSession>>();
+            var mockRepository = new Mock<Repository<PairingSession>>();
 
             mockRepository.Setup(r => r.Save(stubSession.Object));
 

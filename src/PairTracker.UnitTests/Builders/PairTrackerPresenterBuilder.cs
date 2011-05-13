@@ -9,11 +9,11 @@ namespace PairTracker.UnitTests.Builders
     public class PairTrackerPresenterBuilder
     {
         PairTrackerView view;
-        IPairingSession model = new PairingSession(new IntervalFactory(new DateTimeClock()));
+        PairingSession model = new PairingSessionImpl(new IntervalFactory(new DateTimeClock()));
         SessionPercentageStatisticGenerator statGenerator = new SessionPercentageStatisticGenerator();
-        Repository<IPairingSession> repository = new TestRepository<IPairingSession>();
+        Repository<PairingSession> repository = new TestRepository<PairingSession>();
 
-        public PairTrackerPresenterBuilder WithRepository(Repository<IPairingSession> repository)
+        public PairTrackerPresenterBuilder WithRepository(Repository<PairingSession> repository)
         {
             this.repository = repository;
             return this;
@@ -25,7 +25,7 @@ namespace PairTracker.UnitTests.Builders
             return this;
         }
 
-        public PairTrackerPresenterBuilder WithModel(IPairingSession model)
+        public PairTrackerPresenterBuilder WithModel(PairingSession model)
         {
             this.model = model;
             return this;

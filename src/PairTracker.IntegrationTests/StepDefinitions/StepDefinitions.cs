@@ -12,14 +12,14 @@ namespace PairTracker.IntegrationTests.StepDefinitions
     [Binding]
     public class StepDefinitions
     {
-        PairingSession session;
+        PairingSessionImpl session;
         Programmer programmer1 = new Programmer("Bradley");
         Programmer programmer2 = new Programmer("Alex");
 
         [Given(@"a new session has been started")]
         public void GivenANewSessionHasBeenStarted()
         {
-            session = new PairingSession(new IntervalFactory(new DateTimeClock()));
+            session = new PairingSessionImpl(new IntervalFactory(new DateTimeClock()));
             session.Start(programmer1, programmer2);
         }
 

@@ -9,12 +9,12 @@ namespace PairTracker.Presenter
     public class PairTrackerPresenter
     {
         public PairTrackerView view { get; private set; }
-        IPairingSession model;
+        PairingSession model;
         SessionPercentageStatisticGenerator statGenerator;
-        Repository<IPairingSession> repository;
+        Repository<PairingSession> repository;
         AboutPresenter aboutPresenter;
 
-        public PairTrackerPresenter(PairTrackerView view, IPairingSession model, AboutPresenter aboutPresenter, SessionPercentageStatisticGenerator statGenerator, Repository<IPairingSession> repository)
+        public PairTrackerPresenter(PairTrackerView view, PairingSession model, AboutPresenter aboutPresenter, SessionPercentageStatisticGenerator statGenerator, Repository<PairingSession> repository)
         {
             this.view = view;
             this.model = model;

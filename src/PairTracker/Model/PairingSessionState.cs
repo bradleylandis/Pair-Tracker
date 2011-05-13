@@ -5,15 +5,12 @@ using System.Text;
 
 namespace PairTracker.Model
 {
-    public interface IPairingSession
+    public interface PairingSessionState
     {
         void Start(Programmer programmer1, Programmer programmer2);
         void Stop();
         void SwitchController(Programmer programmer);
-        Interval CurrentInterval { get; }
-        IEnumerable<Interval> Intervals { get; }
-        TimeSpan IntervalTimeout { get; }
-        TimeSpan Length { get; }
-        bool IsRunning { get; }
+        void Pause();
+        void Resume();
     }
 }

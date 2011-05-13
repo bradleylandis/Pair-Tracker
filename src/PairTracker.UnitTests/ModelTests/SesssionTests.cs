@@ -27,7 +27,7 @@ namespace PairTracker.UnitTests.ModelTests
         [Test]
         public void PauseStopsCurrentIntervalButDoesntAddANewInterval()
         {
-            var session = new PairingSession(new IntervalFactory(new DateTimeClock()));
+            var session = new PairingSessionImpl(new IntervalFactory(new DateTimeClock()));
 
             session.Start(new Programmer("Joe"), new Programmer("Bob"));
             session.Pause();
@@ -39,7 +39,7 @@ namespace PairTracker.UnitTests.ModelTests
         [Test]
         public void ResumeStartsANewInterval()
         {
-            var session = new PairingSession(new IntervalFactory(new DateTimeClock()));
+            var session = new PairingSessionImpl(new IntervalFactory(new DateTimeClock()));
 
             session.Start(new Programmer("Joe"), new Programmer("Bob"));
             session.Pause();
@@ -53,7 +53,7 @@ namespace PairTracker.UnitTests.ModelTests
         public void ToStringContainsProgrammer1Name()
         {
             var programmerName = "Joe";
-            var session = new PairingSession(new IntervalFactory(new DateTimeClock()));
+            var session = new PairingSessionImpl(new IntervalFactory(new DateTimeClock()));
             session.Start(new Programmer(programmerName), new Programmer("Bob"));
             session.Stop();
 
