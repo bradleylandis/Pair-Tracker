@@ -4,6 +4,8 @@ using PairTracker.Model;
 using PairTracker.Repository;
 using Raven.Client.Document;
 using System.Configuration;
+using System.Windows.Forms;
+using PairTracker.Presenter;
 
 namespace PairTracker.UI
 {
@@ -15,6 +17,8 @@ namespace PairTracker.UI
             Bind<AboutView>().To<AboutForm>();
             Bind<Clock>().To<DateTimeClock>();
             Bind<PairingSession>().To<PairingSessionImpl>();
+            Bind<AboutPresenter>().ToSelf()
+                .WithConstructorArgument("versionNumber", Application.ProductVersion);
 
             Bind<Repository<PairingSession>>().To<FileRepository<PairingSession>>()
                 .WithConstructorArgument("fileLocation", ConfigurationManager.AppSettings["fileLocation"]);

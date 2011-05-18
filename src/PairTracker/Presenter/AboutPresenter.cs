@@ -9,14 +9,17 @@ namespace PairTracker.Presenter
     public class AboutPresenter
     {
         AboutView view;
+        string versionNumber;
 
-        public AboutPresenter(AboutView view)
+        public AboutPresenter(AboutView view, string versionNumber)
         {
+            this.versionNumber = versionNumber;
             this.view = view;
         }
 
         public void Show()
         {
+            view.DisplayVersionNumber(versionNumber);
             view.Show();
         }
     }

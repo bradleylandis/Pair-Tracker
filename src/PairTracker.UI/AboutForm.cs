@@ -14,5 +14,10 @@ namespace PairTracker.UI
         {
             this.ShowDialog();
         }
+
+        public void DisplayVersionNumber(string versionNumber)
+        {
+            versionLabel.Text = versionNumber;
+        }
     }
 }

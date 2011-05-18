@@ -31,7 +31,7 @@
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
-            this.lblVersion = new System.Windows.Forms.Label();
+            this.versionLabel = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // label1
@@ -61,20 +61,20 @@
             this.label3.TabIndex = 2;
             this.label3.Text = "Version:";
             // 
-            // lblVersion
+            // versionLabel
             // 
-            this.lblVersion.AutoSize = true;
-            this.lblVersion.Location = new System.Drawing.Point(121, 58);
-            this.lblVersion.Name = "lblVersion";
-            this.lblVersion.Size = new System.Drawing.Size(0, 13);
-            this.lblVersion.TabIndex = 3;
+            this.versionLabel.AutoSize = true;
+            this.versionLabel.Location = new System.Drawing.Point(121, 58);
+            this.versionLabel.Name = "versionLabel";
+            this.versionLabel.Size = new System.Drawing.Size(0, 13);
+            this.versionLabel.TabIndex = 3;
             // 
             // AboutForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(284, 94);
-            this.Controls.Add(this.lblVersion);
+            this.Controls.Add(this.versionLabel);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
@@ -92,6 +92,6 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Label lblVersion;
+        private System.Windows.Forms.Label versionLabel;
     }
 }
