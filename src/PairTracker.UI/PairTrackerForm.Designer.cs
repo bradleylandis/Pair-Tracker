@@ -28,18 +28,18 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.txtProgrammerTwo = new System.Windows.Forms.TextBox();
-            this.txtProgrammerOne = new System.Windows.Forms.TextBox();
-            this.btnStart = new System.Windows.Forms.Button();
-            this.btnStop = new System.Windows.Forms.Button();
+            this.programmerTwoName = new System.Windows.Forms.TextBox();
+            this.programmerOneName = new System.Windows.Forms.TextBox();
+            this.startButton = new System.Windows.Forms.Button();
+            this.stopButton = new System.Windows.Forms.Button();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
-            this.lblControllerName = new System.Windows.Forms.ToolStripStatusLabel();
-            this.SessionDetails = new System.Windows.Forms.ListView();
+            this.controllerName = new System.Windows.Forms.ToolStripStatusLabel();
+            this.sessionDetails = new System.Windows.Forms.ListView();
             this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader3 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader4 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.Stats = new System.Windows.Forms.ListView();
+            this.statistics = new System.Windows.Forms.ListView();
             this.columnHeader5 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader6 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.label1 = new System.Windows.Forms.Label();
@@ -51,82 +51,83 @@
             this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.pauseButton = new System.Windows.Forms.Button();
             this.statusStrip1.SuspendLayout();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
-            // txtProgrammerTwo
+            // programmerTwoName
             // 
-            this.txtProgrammerTwo.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.programmerTwoName.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtProgrammerTwo.Location = new System.Drawing.Point(85, 62);
-            this.txtProgrammerTwo.Name = "txtProgrammerTwo";
-            this.txtProgrammerTwo.Size = new System.Drawing.Size(305, 20);
-            this.txtProgrammerTwo.TabIndex = 1;
+            this.programmerTwoName.Location = new System.Drawing.Point(85, 62);
+            this.programmerTwoName.Name = "programmerTwoName";
+            this.programmerTwoName.Size = new System.Drawing.Size(305, 20);
+            this.programmerTwoName.TabIndex = 1;
             // 
-            // txtProgrammerOne
+            // programmerOneName
             // 
-            this.txtProgrammerOne.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.programmerOneName.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtProgrammerOne.Location = new System.Drawing.Point(85, 33);
-            this.txtProgrammerOne.Name = "txtProgrammerOne";
-            this.txtProgrammerOne.Size = new System.Drawing.Size(305, 20);
-            this.txtProgrammerOne.TabIndex = 0;
+            this.programmerOneName.Location = new System.Drawing.Point(85, 33);
+            this.programmerOneName.Name = "programmerOneName";
+            this.programmerOneName.Size = new System.Drawing.Size(305, 20);
+            this.programmerOneName.TabIndex = 0;
             // 
-            // btnStart
+            // startButton
             // 
-            this.btnStart.Location = new System.Drawing.Point(15, 98);
-            this.btnStart.Name = "btnStart";
-            this.btnStart.Size = new System.Drawing.Size(104, 23);
-            this.btnStart.TabIndex = 2;
-            this.btnStart.Text = "Start Session";
-            this.btnStart.UseVisualStyleBackColor = true;
-            this.btnStart.Click += new System.EventHandler(this.btnStart_Click);
+            this.startButton.Location = new System.Drawing.Point(15, 98);
+            this.startButton.Name = "startButton";
+            this.startButton.Size = new System.Drawing.Size(104, 23);
+            this.startButton.TabIndex = 2;
+            this.startButton.Text = "Start Session";
+            this.startButton.UseVisualStyleBackColor = true;
+            this.startButton.Click += new System.EventHandler(this.startButton_Click);
             // 
-            // btnStop
+            // stopButton
             // 
-            this.btnStop.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnStop.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.btnStop.Enabled = false;
-            this.btnStop.Location = new System.Drawing.Point(286, 98);
-            this.btnStop.Name = "btnStop";
-            this.btnStop.Size = new System.Drawing.Size(104, 23);
-            this.btnStop.TabIndex = 3;
-            this.btnStop.Text = "Stop Session";
-            this.btnStop.UseVisualStyleBackColor = true;
-            this.btnStop.Click += new System.EventHandler(this.btnStop_Click);
+            this.stopButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.stopButton.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+            this.stopButton.Enabled = false;
+            this.stopButton.Location = new System.Drawing.Point(286, 98);
+            this.stopButton.Name = "stopButton";
+            this.stopButton.Size = new System.Drawing.Size(104, 23);
+            this.stopButton.TabIndex = 3;
+            this.stopButton.Text = "Stop Session";
+            this.stopButton.UseVisualStyleBackColor = true;
+            this.stopButton.Click += new System.EventHandler(this.stopButton_Click);
             // 
             // statusStrip1
             // 
             this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.lblControllerName});
+            this.controllerName});
             this.statusStrip1.Location = new System.Drawing.Point(0, 520);
             this.statusStrip1.Name = "statusStrip1";
             this.statusStrip1.Size = new System.Drawing.Size(407, 22);
             this.statusStrip1.TabIndex = 9;
             this.statusStrip1.Text = "statusStrip1";
             // 
-            // lblControllerName
+            // controllerName
             // 
-            this.lblControllerName.Name = "lblControllerName";
-            this.lblControllerName.Size = new System.Drawing.Size(0, 17);
+            this.controllerName.Name = "controllerName";
+            this.controllerName.Size = new System.Drawing.Size(0, 17);
             // 
-            // SessionDetails
+            // sessionDetails
             // 
-            this.SessionDetails.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.sessionDetails.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.SessionDetails.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.sessionDetails.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.columnHeader1,
             this.columnHeader2,
             this.columnHeader3,
             this.columnHeader4});
-            this.SessionDetails.Location = new System.Drawing.Point(15, 345);
-            this.SessionDetails.Name = "SessionDetails";
-            this.SessionDetails.Size = new System.Drawing.Size(375, 155);
-            this.SessionDetails.TabIndex = 10;
-            this.SessionDetails.UseCompatibleStateImageBehavior = false;
-            this.SessionDetails.View = System.Windows.Forms.View.Details;
+            this.sessionDetails.Location = new System.Drawing.Point(15, 345);
+            this.sessionDetails.Name = "sessionDetails";
+            this.sessionDetails.Size = new System.Drawing.Size(375, 155);
+            this.sessionDetails.TabIndex = 10;
+            this.sessionDetails.UseCompatibleStateImageBehavior = false;
+            this.sessionDetails.View = System.Windows.Forms.View.Details;
             // 
             // columnHeader1
             // 
@@ -148,19 +149,19 @@
             this.columnHeader4.Text = "Length";
             this.columnHeader4.Width = 85;
             // 
-            // Stats
+            // statistics
             // 
-            this.Stats.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.statistics.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.Stats.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.statistics.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.columnHeader5,
             this.columnHeader6});
-            this.Stats.Location = new System.Drawing.Point(15, 152);
-            this.Stats.Name = "Stats";
-            this.Stats.Size = new System.Drawing.Size(375, 155);
-            this.Stats.TabIndex = 11;
-            this.Stats.UseCompatibleStateImageBehavior = false;
-            this.Stats.View = System.Windows.Forms.View.Details;
+            this.statistics.Location = new System.Drawing.Point(15, 152);
+            this.statistics.Name = "statistics";
+            this.statistics.Size = new System.Drawing.Size(375, 155);
+            this.statistics.TabIndex = 11;
+            this.statistics.UseCompatibleStateImageBehavior = false;
+            this.statistics.View = System.Windows.Forms.View.Details;
             // 
             // columnHeader5
             // 
@@ -230,7 +231,7 @@
             // exitToolStripMenuItem
             // 
             this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
-            this.exitToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.exitToolStripMenuItem.Size = new System.Drawing.Size(92, 22);
             this.exitToolStripMenuItem.Text = "Exit";
             this.exitToolStripMenuItem.Click += new System.EventHandler(this.exitToolStripMenuItem_Click);
             // 
@@ -245,29 +246,41 @@
             // aboutToolStripMenuItem
             // 
             this.aboutToolStripMenuItem.Name = "aboutToolStripMenuItem";
-            this.aboutToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.aboutToolStripMenuItem.Size = new System.Drawing.Size(107, 22);
             this.aboutToolStripMenuItem.Text = "About";
             this.aboutToolStripMenuItem.Click += new System.EventHandler(this.aboutToolStripMenuItem_Click);
             // 
+            // pauseButton
+            // 
+            this.pauseButton.Enabled = false;
+            this.pauseButton.Location = new System.Drawing.Point(155, 98);
+            this.pauseButton.Name = "pauseButton";
+            this.pauseButton.Size = new System.Drawing.Size(104, 23);
+            this.pauseButton.TabIndex = 17;
+            this.pauseButton.Text = "Pause Session";
+            this.pauseButton.UseVisualStyleBackColor = true;
+            this.pauseButton.Click += new System.EventHandler(this.pauseButton_Click);
+            // 
             // PairTrackerForm
             // 
-            this.AcceptButton = this.btnStart;
+            this.AcceptButton = this.startButton;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.CancelButton = this.btnStop;
+            this.CancelButton = this.stopButton;
             this.ClientSize = new System.Drawing.Size(407, 542);
+            this.Controls.Add(this.pauseButton);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.Stats);
-            this.Controls.Add(this.SessionDetails);
+            this.Controls.Add(this.statistics);
+            this.Controls.Add(this.sessionDetails);
             this.Controls.Add(this.statusStrip1);
             this.Controls.Add(this.menuStrip1);
-            this.Controls.Add(this.btnStop);
-            this.Controls.Add(this.btnStart);
-            this.Controls.Add(this.txtProgrammerOne);
-            this.Controls.Add(this.txtProgrammerTwo);
+            this.Controls.Add(this.stopButton);
+            this.Controls.Add(this.startButton);
+            this.Controls.Add(this.programmerOneName);
+            this.Controls.Add(this.programmerTwoName);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "PairTrackerForm";
@@ -284,18 +297,18 @@
 
         #endregion
 
-        private System.Windows.Forms.TextBox txtProgrammerTwo;
-        private System.Windows.Forms.TextBox txtProgrammerOne;
-        private System.Windows.Forms.Button btnStart;
-        private System.Windows.Forms.Button btnStop;
+        private System.Windows.Forms.TextBox programmerTwoName;
+        private System.Windows.Forms.TextBox programmerOneName;
+        private System.Windows.Forms.Button startButton;
+        private System.Windows.Forms.Button stopButton;
         private System.Windows.Forms.StatusStrip statusStrip1;
-        private System.Windows.Forms.ToolStripStatusLabel lblControllerName;
-        private System.Windows.Forms.ListView SessionDetails;
+        private System.Windows.Forms.ToolStripStatusLabel controllerName;
+        private System.Windows.Forms.ListView sessionDetails;
         private System.Windows.Forms.ColumnHeader columnHeader1;
         private System.Windows.Forms.ColumnHeader columnHeader2;
         private System.Windows.Forms.ColumnHeader columnHeader3;
         private System.Windows.Forms.ColumnHeader columnHeader4;
-        private System.Windows.Forms.ListView Stats;
+        private System.Windows.Forms.ListView statistics;
         private System.Windows.Forms.ColumnHeader columnHeader5;
         private System.Windows.Forms.ColumnHeader columnHeader6;
         private System.Windows.Forms.Label label1;
@@ -307,6 +320,7 @@
         private System.Windows.Forms.ToolStripMenuItem exitToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem helpToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem aboutToolStripMenuItem;
+        private System.Windows.Forms.Button pauseButton;
     }
 }
 

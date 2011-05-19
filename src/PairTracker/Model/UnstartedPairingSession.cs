@@ -13,11 +13,9 @@ namespace PairTracker.Model
             this.pairingSession = pairingSession;
         }
 
-        public void Start(Programmer programmer1, Programmer programmer2)
+        public void Start()
         {
             pairingSession.intervals.Clear();
-            pairingSession.Programmer1 = programmer1;
-            pairingSession.Programmer2 = programmer2;
 
             pairingSession.StartNewInterval(Programmer.Neither);
             pairingSession.CurrentState = new RunningPairingSession(pairingSession);

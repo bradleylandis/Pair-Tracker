@@ -20,7 +20,8 @@ namespace PairTracker.IntegrationTests.StepDefinitions
         public void GivenANewSessionHasBeenStarted()
         {
             session = new PairingSessionImpl(new IntervalFactory(new DateTimeClock()));
-            session.Start(programmer1, programmer2);
+            session.Initialize(programmer1, programmer2);
+            session.Start();
         }
 
         [When(@"Programmer 1 takes control")]
@@ -73,7 +74,7 @@ namespace PairTracker.IntegrationTests.StepDefinitions
         [Given(@"the session is resumed")]
         public void WhenTheSessionIsResumed()
         {
-            session.Resume();
+            session.Start();
         }
     }
 }

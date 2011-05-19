@@ -27,7 +27,6 @@ namespace PairTracker.UI
             handler = new InputDevice.DeviceEventHandler(inputDevice_KeyPressed);
 
             IntervalTimer = new Timer();
-            IntervalTimer.Tick += new EventHandler(IntervalTimer_Tick);
 
             this.FormClosing += new FormClosingEventHandler(PairTrackerForm_FormClosing);
         }
@@ -77,30 +76,30 @@ namespace PairTracker.UI
         private Programmer programmer1;
         private Programmer programmer2;
 
-        private void btnStart_Click(object sender, EventArgs e)
+        private void startButton_Click(object sender, EventArgs e)
         {
-            inputDevice.KeyPressed += handler;
-            programmer1 = new Programmer(txtProgrammerOne.Text);
-            programmer2 = new Programmer(txtProgrammerTwo.Text);
+            programmer1 = new Programmer(programmerOneName.Text);
+            programmer2 = new Programmer(programmerTwoName.Text);
             if(StartButton_Clicked != null)
                 StartButton_Clicked(this, new StartButtonClickedEventArgs(programmer1, programmer2));
- 
+        }
+
+        public void StartListeningForInput()
+        {
+            inputDevice.KeyPressed += handler;
             tracking = true;
         }
 
-        private void btnStop_Click(object sender, EventArgs e)
+        public void StopListeningForInput()
         {
             inputDevice.KeyPressed -= handler;
+            tracking = false;
+        }
+
+        private void stopButton_Click(object sender, EventArgs e)
+        {
             if(StopButton_Clicked != null)
                 StopButton_Clicked(this, new EventArgs());
-
-            if (IntervalTimer != null)
-            {
-                IntervalTimer.Stop();
-                IntervalTimer.Tick -= new EventHandler(IntervalTimer_Tick);
-            }
-
-            tracking = false;
         }
 
         public event EventHandler<StartButtonClickedEventArgs> StartButton_Clicked;
@@ -108,6 +107,7 @@ namespace PairTracker.UI
         public event EventHandler<ControllerChangedEventArgs> Controller_Changed;
         public event EventHandler<CloseButtonClickedEventArgs> CloseButton_Clicked;
         public event EventHandler<EventArgs> About_Clicked;
+        public event EventHandler<EventArgs> PauseButton_Clicked;
 
         public void ConfirmClose()
         {
@@ -118,51 +118,60 @@ namespace PairTracker.UI
             if (CloseButton_Clicked != null)
                 CloseButton_Clicked(this, new CloseButtonClickedEventArgs(confirmationStatus));
         }
-        
+
+        public void SetStartStopButtonsToPauseMode()
+        {
+            startButton.Enabled = true;
+            stopButton.Enabled = false;
+            pauseButton.Enabled = false;
+        }
+
         public void SetStartStopButtonsToStoppedMode()
         {
-            btnStart.Enabled = true;
-            btnStop.Enabled = false;
+            startButton.Enabled = true;
+            stopButton.Enabled = false;
+            pauseButton.Enabled = false;
         }
 
         public void SetStartStopButtonsToStartedMode()
         {
-            btnStart.Enabled = false;
-            btnStop.Enabled = true;
+            startButton.Enabled = false;
+            stopButton.Enabled = true;
+            pauseButton.Enabled = true;
         }
 
         public void LockNameEntry()
         {
-            txtProgrammerOne.Enabled = false;
-            txtProgrammerTwo.Enabled = false;
+            programmerOneName.Enabled = false;
+            programmerTwoName.Enabled = false;
         }
 
         public void UnlockNameEntry()
         {
-            txtProgrammerOne.Enabled = true;
-            txtProgrammerTwo.Enabled = true;
+            programmerOneName.Enabled = true;
+            programmerTwoName.Enabled = true;
         }
 
         public void DisplayController(Programmer programmer)
         {
-            lblControllerName.Text = programmer.Name + " is currently typing.";
+            controllerName.Text = programmer.Name + " is currently typing.";
         }
 
         public void ResetController()
         {
-            lblControllerName.Text = string.Empty;
+            controllerName.Text = string.Empty;
         }
 
         public void DisplayIntervals(IEnumerable<Interval> intervals)
         {
-            SessionDetails.Items.Clear();
+            sessionDetails.Items.Clear();
             foreach (var interval in intervals)
                 DisplayInterval(interval);
         }
 
         void DisplayInterval(Interval interval)
         {
-            var item = SessionDetails.Items.Add(interval.Programmer.Name);
+            var item = sessionDetails.Items.Add(interval.Programmer.Name);
             item.SubItems.Add(interval.StartTime.TimeOfDay.ToString());
             item.SubItems.Add(interval.EndTime.TimeOfDay.ToString());
             item.SubItems.Add(interval.Length.ToString());
@@ -173,18 +182,25 @@ namespace PairTracker.UI
             IntervalTimer.Interval = (int)timeout.TotalMilliseconds;
             IntervalTimer.Stop();
             IntervalTimer.Start();
+            IntervalTimer.Tick += new EventHandler(IntervalTimer_Tick);
+        }
+
+        public void StopIntervalTimeoutTimer()
+        {
+            IntervalTimer.Stop();
+            IntervalTimer.Tick -= new EventHandler(IntervalTimer_Tick);
         }
 
         public void DisplayStats(IDictionary<Programmer, int> stats)
         {
-            Stats.Items.Clear();
+            statistics.Items.Clear();
             foreach (var stat in stats)
                 DisplayStat(stat);
         }
 
         private void DisplayStat(KeyValuePair<Programmer, int> stat)
         {
-            Stats.Items.Add(stat.Key.Name).SubItems.Add(stat.Value.ToString());
+            statistics.Items.Add(stat.Key.Name).SubItems.Add(stat.Value.ToString());
         }
 
         private void exitToolStripMenuItem_Click(object sender, EventArgs e)
@@ -197,6 +213,12 @@ namespace PairTracker.UI
         {
             if (About_Clicked != null)
                 About_Clicked(this, new EventArgs());
+        }
+
+        private void pauseButton_Click(object sender, EventArgs e)
+        {
+            if (PauseButton_Clicked != null)
+                PauseButton_Clicked(this, new StartButtonClickedEventArgs(programmer1, programmer2));
         }
     }
 }

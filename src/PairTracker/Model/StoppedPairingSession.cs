@@ -7,7 +7,7 @@ namespace PairTracker.Model
 {
     public class StoppedPairingSession : PairingSessionState
     {
-        public void Start(Programmer programmer1, Programmer programmer2)
+        public void Start()
         {
             throw new NotImplementedException();
         }
@@ -23,11 +23,6 @@ namespace PairTracker.Model
         }
 
         public void Pause()
-        {
-            throw new NotImplementedException();
-        }
-
-        public void Resume()
         {
             throw new NotImplementedException();
         }

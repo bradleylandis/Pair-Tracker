@@ -27,6 +27,18 @@ namespace PairTracker.Presenter
             view.Controller_Changed += new EventHandler<ControllerChangedEventArgs>(ChangeControllerHandler);
             view.CloseButton_Clicked += new EventHandler<CloseButtonClickedEventArgs>(Close);
             view.About_Clicked += new EventHandler<EventArgs>(ShowAbout);
+            view.PauseButton_Clicked += new EventHandler<EventArgs>(PauseSession);
+        }
+
+        private void PauseSession(object sender, EventArgs e)
+        {
+            model.Pause();
+            view.SetStartStopButtonsToPauseMode();
+            view.ResetController();
+            view.DisplayIntervals(model.Intervals);
+            DisplayStats();
+            view.StopIntervalTimeoutTimer();
+            view.StopListeningForInput();
         }
 
         private void ShowAbout(object sender, EventArgs e)
@@ -49,10 +61,12 @@ namespace PairTracker.Presenter
 
         private void StartSession(object sender, StartButtonClickedEventArgs e) 
         {
-            model.Start(e.Programmer1, e.Programmer2);
+            model.Initialize(e.Programmer1, e.Programmer2);
+            model.Start();
             view.LockNameEntry();
             view.SetStartStopButtonsToStartedMode();
             view.DisplayIntervals(model.Intervals);
+            view.StartListeningForInput();
         }
 
         private void EndSession(object sender, EventArgs e) 
@@ -68,6 +82,8 @@ namespace PairTracker.Presenter
             view.UnlockNameEntry();
             view.SetStartStopButtonsToStoppedMode();
             view.DisplayIntervals(model.Intervals);
+            view.StopIntervalTimeoutTimer();
+            view.StopListeningForInput();
 
             DisplayStats();
             repository.Save(model);

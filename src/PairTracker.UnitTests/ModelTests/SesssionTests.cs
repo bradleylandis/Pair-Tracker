@@ -29,7 +29,8 @@ namespace PairTracker.UnitTests.ModelTests
         {
             var session = new PairingSessionImpl(new IntervalFactory(new DateTimeClock()));
 
-            session.Start(new Programmer("Joe"), new Programmer("Bob"));
+            session.Initialize(new Programmer("Joe"), new Programmer("Bob"));
+            session.Start();
             session.Pause();
 
             Assert.That(session.Intervals.Count(), Is.EqualTo(1));
@@ -41,9 +42,10 @@ namespace PairTracker.UnitTests.ModelTests
         {
             var session = new PairingSessionImpl(new IntervalFactory(new DateTimeClock()));
 
-            session.Start(new Programmer("Joe"), new Programmer("Bob"));
+            session.Initialize(new Programmer("Joe"), new Programmer("Bob"));
+            session.Start();
             session.Pause();
-            session.Resume();
+            session.Start();
 
             Assert.That(session.Intervals.Count(), Is.EqualTo(1));
             Assert.That(session.CurrentInterval, Is.Not.Null);
@@ -54,7 +56,8 @@ namespace PairTracker.UnitTests.ModelTests
         {
             var programmerName = "Joe";
             var session = new PairingSessionImpl(new IntervalFactory(new DateTimeClock()));
-            session.Start(new Programmer(programmerName), new Programmer("Bob"));
+            session.Initialize(new Programmer(programmerName), new Programmer("Bob"));
+            session.Start();
             session.Stop();
 
             Assert.That(session.ToString(), Contains.Substring(programmerName));

@@ -14,9 +14,10 @@ namespace PairTracker.Model
             this.pairingSession = pairingSession;
         }
 
-        public void Start(Programmer programmer1, Programmer programmer2)
+        public void Start()
         {
-            throw new NotImplementedException();
+            pairingSession.StartNewInterval(Programmer.Neither);
+            pairingSession.CurrentState = new RunningPairingSession(pairingSession);
         }
 
         public void Stop()
@@ -32,12 +33,6 @@ namespace PairTracker.Model
         public void Pause()
         {
             throw new NotImplementedException();
-        }
-
-        public void Resume()
-        {
-            pairingSession.StartNewInterval(Programmer.Neither);
-            pairingSession.CurrentState = new RunningPairingSession(pairingSession);
         }
     }
 }

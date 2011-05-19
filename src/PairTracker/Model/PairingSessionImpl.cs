@@ -47,19 +47,20 @@ namespace PairTracker.Model
         public TimeSpan IntervalTimeout { get; private set; }
         public Interval CurrentInterval { get; private set; }
 
-        public void Start(Programmer programmer1, Programmer programmer2)
+        public void Initialize(Programmer programmer1, Programmer programmer2)
         {
-            CurrentState.Start(programmer1, programmer2);            
+            Programmer1 = programmer1;
+            Programmer2 = programmer2;
+        }
+
+        public void Start()
+        {
+            CurrentState.Start();            
         }
 
         public void Pause()
         {
             CurrentState.Pause();
-        }
-
-        public void Resume()
-        {
-            CurrentState.Resume();
         }
 
         public void Stop() {
