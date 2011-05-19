@@ -77,5 +77,23 @@ namespace PairTracker.UnitTests.ModelTests
             Assert.That(results.Count, Is.EqualTo(1));
             Assert.That(results[programmerJoe], Is.EqualTo(100));
         }
+
+        [Test]
+        public void SessionWith2IntervalsOfOddLengthsResultsInTotalOf100Percent()
+        {
+            var programmerJoe = new Programmer("Joe");
+            var programmerBob = new Programmer("Bob");
+            var intervals = new List<Interval>();
+            intervals.Add(new TestInterval(new DateTime(2000, 1, 1, 0, 0, 0), new TimeSpan(0, 0, 1), programmerJoe));
+            intervals.Add(new TestInterval(new DateTime(2000, 1, 1, 0, 0, 1), new TimeSpan(0, 0, 7), programmerBob));
+            var session = new TestSession(programmerJoe, programmerBob, intervals);
+
+            var statGenerator = new SessionPercentageStatisticGenerator();
+            var results = statGenerator.Generate(session);
+
+            Assert.That(results.Count, Is.EqualTo(2));
+            Assert.That(results[programmerJoe], Is.EqualTo(12));
+            Assert.That(results[programmerBob], Is.EqualTo(88));
+        }
     }
 }

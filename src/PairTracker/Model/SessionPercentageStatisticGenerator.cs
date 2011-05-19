@@ -35,8 +35,8 @@ namespace PairTracker.Model
 
             var totalSecondsControlledByAProgrammer = session.Length - timeControlledByNeither;
             foreach (var item in totalSecondsInSessionByProgrammer)
-                if(item.Key != Programmer.Neither)
-                    percentageOfSessionByProgrammer.Add(item.Key, (int)((double)100 * (item.Value.TotalSeconds / totalSecondsControlledByAProgrammer.TotalSeconds)));
+                if (item.Key != Programmer.Neither)
+                    percentageOfSessionByProgrammer.Add(item.Key, (int)Math.Round((double)100 * (item.Value.TotalSeconds / totalSecondsControlledByAProgrammer.TotalSeconds)));
 
             return percentageOfSessionByProgrammer;
         }
