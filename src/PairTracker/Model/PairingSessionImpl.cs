@@ -22,7 +22,7 @@ namespace PairTracker.Model
 
         public bool IsRunning
         {
-            get { return CurrentState is RunningPairingSession; }
+            get { return CurrentState is RunningPairingSession || CurrentState is PausedPairingSession; }
         }
 
         private readonly IntervalFactory intervalFactory;
@@ -80,6 +80,9 @@ namespace PairTracker.Model
 
         internal void StopCurrentInterval()
         {
+            if (CurrentInterval == null)
+                return;
+
             CurrentInterval.Stop();
             intervals.Add(CurrentInterval);
             CurrentInterval = null;

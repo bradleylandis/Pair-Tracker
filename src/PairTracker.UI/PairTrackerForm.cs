@@ -14,6 +14,21 @@ namespace PairTracker.UI
         InputDevice.DeviceEventHandler handler;
         bool tracking = false;
 
+        public event EventHandler<StartButtonClickedEventArgs> StartButton_Clicked;
+        public event EventHandler<EventArgs> StopButton_Clicked;
+        public event EventHandler<ControllerChangedEventArgs> Controller_Changed;
+        public event EventHandler<CloseButtonClickedEventArgs> CloseButton_Clicked;
+        public event EventHandler<EventArgs> About_Clicked;
+        public event EventHandler<EventArgs> PauseButton_Clicked;
+
+        private Programmer programmer1;
+        private Programmer programmer2;
+
+        Timer IntervalTimer { get; set; }
+
+        string keyboardId1 = string.Empty;
+        string keyboardId2 = string.Empty;
+
         public PairTrackerForm()
         {
             InitializeComponent();
@@ -27,28 +42,22 @@ namespace PairTracker.UI
             handler = new InputDevice.DeviceEventHandler(inputDevice_KeyPressed);
 
             IntervalTimer = new Timer();
-
-            this.FormClosing += new FormClosingEventHandler(PairTrackerForm_FormClosing);
         }
 
-        void PairTrackerForm_FormClosing(object sender, FormClosingEventArgs e)
+        protected override void OnClosing(System.ComponentModel.CancelEventArgs e)
         {
             //TODO: What's the best way to handle when the user clicks on the "X"?
             // I want it to go through the presenter so confirmation/save happens, but then how do you handle e.Cancel = true?
+            base.OnClosing(e);
         }
 
-        void IntervalTimer_Tick(object sender, EventArgs e)
+        private void IntervalTimer_Tick(object sender, EventArgs e)
         {
             if (Controller_Changed != null)
                 Controller_Changed(this, new ControllerChangedEventArgs(Programmer.Neither));
         }
 
-        Timer IntervalTimer { get; set; }
-
-        string keyboardId1 = string.Empty;
-        string keyboardId2 = string.Empty;
-
-        void inputDevice_KeyPressed(object sender, InputDevice.KeyControlEventArgs e)
+        private void inputDevice_KeyPressed(object sender, InputDevice.KeyControlEventArgs e)
         {
             //TODO: Send the keyboard that the input came from to the controller_changed event instead of the programmer and let the presenter figure it out
             Programmer controllingProgrammer = Programmer.Neither;
@@ -72,9 +81,6 @@ namespace PairTracker.UI
                 inputDevice.ProcessMessage(message);
             base.WndProc(ref message);
         }
-
-        private Programmer programmer1;
-        private Programmer programmer2;
 
         private void startButton_Click(object sender, EventArgs e)
         {
@@ -101,14 +107,7 @@ namespace PairTracker.UI
             if(StopButton_Clicked != null)
                 StopButton_Clicked(this, new EventArgs());
         }
-
-        public event EventHandler<StartButtonClickedEventArgs> StartButton_Clicked;
-        public event EventHandler<EventArgs> StopButton_Clicked;
-        public event EventHandler<ControllerChangedEventArgs> Controller_Changed;
-        public event EventHandler<CloseButtonClickedEventArgs> CloseButton_Clicked;
-        public event EventHandler<EventArgs> About_Clicked;
-        public event EventHandler<EventArgs> PauseButton_Clicked;
-
+        
         public void ConfirmClose()
         {
             var result = MessageBox.Show("A session is currently running.  Are you sure you want to close?", "Confirm Close", MessageBoxButtons.YesNo);
@@ -122,7 +121,7 @@ namespace PairTracker.UI
         public void SetStartStopButtonsToPauseMode()
         {
             startButton.Enabled = true;
-            stopButton.Enabled = false;
+            stopButton.Enabled = true;
             pauseButton.Enabled = false;
         }
 

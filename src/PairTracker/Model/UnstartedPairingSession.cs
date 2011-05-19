@@ -23,7 +23,7 @@ namespace PairTracker.Model
 
         public void Stop()
         {
-            throw new NotImplementedException();
+            //throw new NotImplementedException();
         }
 
         public void SwitchController(Programmer programmer)

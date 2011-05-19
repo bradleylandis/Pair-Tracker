@@ -22,7 +22,8 @@ namespace PairTracker.Model
 
         public void Stop()
         {
-            throw new NotImplementedException();
+            pairingSession.StopCurrentInterval();
+            pairingSession.CurrentState = new StoppedPairingSession();
         }
 
         public void SwitchController(Programmer programmer)

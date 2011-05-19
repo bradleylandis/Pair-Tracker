@@ -60,18 +60,18 @@
             // 
             this.programmerTwoName.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.programmerTwoName.Location = new System.Drawing.Point(85, 62);
+            this.programmerTwoName.Location = new System.Drawing.Point(93, 62);
             this.programmerTwoName.Name = "programmerTwoName";
-            this.programmerTwoName.Size = new System.Drawing.Size(305, 20);
+            this.programmerTwoName.Size = new System.Drawing.Size(297, 20);
             this.programmerTwoName.TabIndex = 1;
             // 
             // programmerOneName
             // 
             this.programmerOneName.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.programmerOneName.Location = new System.Drawing.Point(85, 33);
+            this.programmerOneName.Location = new System.Drawing.Point(93, 33);
             this.programmerOneName.Name = "programmerOneName";
-            this.programmerOneName.Size = new System.Drawing.Size(305, 20);
+            this.programmerOneName.Size = new System.Drawing.Size(297, 20);
             this.programmerOneName.TabIndex = 0;
             // 
             // startButton
