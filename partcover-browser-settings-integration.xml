@@ -1,7 +1,0 @@
-<PartCoverSettings>
-  <Target>C:\Development\Pair-Tracker\tools\NUnit\nunit-console-x86.exe</Target>
-  <TargetWorkDir>C:\Development\Pair-Tracker\tools\NUnit</TargetWorkDir>
-  <TargetArgs>C:\Development\Pair-Tracker\src\PairTracker.IntegrationTests\bin\Debug\PairTracker.IntegrationTests.dll</TargetArgs>
-  <Rule>+[PairTracker]PairTracker.Model.*</Rule>
-  <Rule>+[PairTracker]PairTracker.Presenter.*</Rule>
-</PartCoverSettings>
