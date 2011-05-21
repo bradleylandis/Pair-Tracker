@@ -1,7 +1,7 @@
 ﻿Feature:  Interval Creation
 	In order to asses how well I am pairing
 	As a programmer
-	I want the system to create a new interval each time control swithes between programmers
+	I want the system to create a new interval each time control switches between programmers
 
 Scenario: Empty Session
 Given a new session has been started

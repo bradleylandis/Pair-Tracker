@@ -31,7 +31,7 @@ namespace PairTracker.IntegrationTests.Specifications
         {
             testRunner = TechTalk.SpecFlow.TestRunnerManager.GetTestRunner();
             TechTalk.SpecFlow.FeatureInfo featureInfo = new TechTalk.SpecFlow.FeatureInfo(new System.Globalization.CultureInfo("en-US"), "Interval Creation", "In order to asses how well I am pairing\r\nAs a programmer\r\nI want the system to cr" +
-                    "eate a new interval each time control swithes between programmers", ((string[])(null)));
+                    "eate a new interval each time control switches between programmers", ((string[])(null)));
             testRunner.OnFeatureStart(featureInfo);
         }
         
