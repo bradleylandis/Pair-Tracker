@@ -58,6 +58,7 @@
     <Compile Include="ModelTests\IntervalTests.cs" />
     <Compile Include="ModelTests\SessionPercentageStatisticGeneratorTests.cs" />
     <Compile Include="ModelTests\SesssionTests.cs" />
+    <Compile Include="PresenterTests\AboutPresenterTests.cs" />
     <Compile Include="PresenterTests\PairTrackerPresenterTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="TestDoubles\TestInterval.cs">

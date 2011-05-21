@@ -10,9 +10,95 @@ using PairTracker.UnitTests.TestDoubles;
 
 namespace PairTracker.UnitTests.PresenterTests
 {
-    [TestFixture]
     public class PairTrackerPresenterTests
     {
+        [Test]
+        public void Pause()
+        {
+            var stubModel = new Mock<PairingSession>();
+            var mockPairTrackerView = new Mock<PairTrackerView>();
+
+            mockPairTrackerView.Setup(v => v.SetStartStopButtonsToPauseMode());
+
+            var presenter = new PairTrackerPresenterBuilder().WithView(mockPairTrackerView.Object).WithModel(stubModel.Object).Build();
+            mockPairTrackerView.Raise(v => v.PauseButton_Clicked += null, new EventArgs());
+
+            mockPairTrackerView.VerifyAll();
+        }
+
+        [Test]
+        public void CloseWithNotConfirmedConfirmationStatusAndSessionIsRunningCallsNothing()
+        {
+            var stubModel = new Mock<PairingSession>();
+            var mockPairTrackerView = new Mock<PairTrackerView>(MockBehavior.Strict);
+
+            stubModel.Setup(m => m.IsRunning).Returns(true);
+
+            var presenter = new PairTrackerPresenterBuilder().WithView(mockPairTrackerView.Object).WithModel(stubModel.Object).Build();
+            mockPairTrackerView.Raise(v => v.CloseButton_Clicked += null, new CloseButtonClickedEventArgs(ConfirmationStatus.NotConfirmed));
+
+            mockPairTrackerView.VerifyAll();
+        }
+
+        [Test]
+        public void CloseWithConfirmedConfirmationStatusAndSessionIsRunningCallsClose()
+        {
+            var stubModel = new Mock<PairingSession>();
+            var mockPairTrackerView = new Mock<PairTrackerView>();
+
+            mockPairTrackerView.Setup(v => v.Close());
+            stubModel.Setup(m => m.IsRunning).Returns(true);
+
+            var presenter = new PairTrackerPresenterBuilder().WithView(mockPairTrackerView.Object).WithModel(stubModel.Object).Build();
+            mockPairTrackerView.Raise(v => v.CloseButton_Clicked += null, new CloseButtonClickedEventArgs(ConfirmationStatus.Confirmed));
+
+            mockPairTrackerView.VerifyAll();
+        }
+
+        [Test]
+        public void CloseWithUnknownConfirmationStatusAndSessionIsRunningCallsConfirmClose()
+        {
+            var stubModel = new Mock<PairingSession>();
+            var mockPairTrackerView = new Mock<PairTrackerView>();
+
+            mockPairTrackerView.Setup(v => v.ConfirmClose());
+            stubModel.Setup(m => m.IsRunning).Returns(true);
+
+            var presenter = new PairTrackerPresenterBuilder().WithView(mockPairTrackerView.Object).WithModel(stubModel.Object).Build();
+            mockPairTrackerView.Raise(v => v.CloseButton_Clicked += null, new CloseButtonClickedEventArgs(ConfirmationStatus.Unknown));
+
+            mockPairTrackerView.VerifyAll();
+        }
+
+        [Test]
+        public void CloseWithSessionIsNotRunningCallsClose()
+        {
+            var stubModel = new Mock<PairingSession>();
+            var mockPairTrackerView = new Mock<PairTrackerView>();
+
+            mockPairTrackerView.Setup(v => v.Close());
+            stubModel.Setup(m => m.IsRunning).Returns(false);
+
+            var presenter = new PairTrackerPresenterBuilder().WithView(mockPairTrackerView.Object).WithModel(stubModel.Object).Build();
+            mockPairTrackerView.Raise(v => v.CloseButton_Clicked += null, new CloseButtonClickedEventArgs(ConfirmationStatus.Unknown));
+
+            mockPairTrackerView.VerifyAll();
+        }
+
+        [Test]
+        public void ShowAboutCallsShowOnAboutPresenter()
+        {
+            var mockAboutPresenter = new Mock<AboutPresenter>();
+            var stubPairTrackerView = new Mock<PairTrackerView>();
+
+            mockAboutPresenter.Setup(p => p.Show());
+
+            var presenter = new PairTrackerPresenterBuilder().WithView(stubPairTrackerView.Object).WithAboutPresenter(mockAboutPresenter.Object).Build();
+            stubPairTrackerView.Raise(v => v.About_Clicked += null, new EventArgs());
+
+            mockAboutPresenter.VerifyAll();
+        }
+
         [Test]
         public void StopCallsSave()
         {

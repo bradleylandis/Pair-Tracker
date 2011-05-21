@@ -5,7 +5,6 @@ using System;
 
 namespace PairTracker.UnitTests.ModelTests
 {
-    [TestFixture]
     public class IntervalTests
     {
         [Test]

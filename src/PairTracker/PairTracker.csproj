@@ -74,6 +74,7 @@
     <Compile Include="Model\StoppedPairingSession.cs" />
     <Compile Include="Model\UnstartedPairingSession.cs" />
     <Compile Include="Presenter\AboutPresenter.cs" />
+    <Compile Include="Presenter\AboutPresenterImpl.cs" />
     <Compile Include="Repository\FileRepository.cs" />
     <Compile Include="Repository\RavenDBRepository.cs" />
     <Compile Include="Repository\Repository.cs" />

@@ -17,7 +17,7 @@ namespace PairTracker.UI
             Bind<AboutView>().To<AboutForm>();
             Bind<Clock>().To<DateTimeClock>();
             Bind<PairingSession>().To<PairingSessionImpl>();
-            Bind<AboutPresenter>().ToSelf()
+            Bind<AboutPresenter>().To<AboutPresenterImpl>()
                 .WithConstructorArgument("versionNumber", Application.ProductVersion);
 
             Bind<Repository<PairingSession>>().To<FileRepository<PairingSession>>()

@@ -6,7 +6,6 @@ using System.Collections.Generic;
 
 namespace PairTracker.UnitTests.ModelTests
 {
-    [TestFixture]
     public class SessionPercentageStatisticGeneratorTests
     {
         [Test]

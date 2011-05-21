@@ -9,7 +9,6 @@ using PairTracker.UnitTests.TestDoubles;
 
 namespace PairTracker.UnitTests.ModelTests
 {
-    [TestFixture]
     public class SesssionTests
     {
         [Test]
