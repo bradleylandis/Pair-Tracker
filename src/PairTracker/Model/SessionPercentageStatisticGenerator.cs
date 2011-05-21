@@ -3,31 +3,31 @@ using System;
 
 namespace PairTracker.Model
 {
-    public class SessionPercentageStatisticGenerator : StatisticGenerator<IDictionary<Programmer, int>>
+    public class SessionPercentageStatisticGenerator : StatisticGenerator<IDictionary<Programmer, Statistic>>
     {
-        public IDictionary<Programmer, int> Generate(PairingSession session)
+        public IDictionary<Programmer, Statistic> Generate(PairingSession session)
         {
-            var totalSecondsInSessionByProgrammer = GetTotalSecondsByProgrammer(session);
+            var totalSecondsInSessionByProgrammer = GetTotalTimeByProgrammer(session);
 
             return GetPercentageOfSessionByProgrammer(totalSecondsInSessionByProgrammer, session);
         }
 
-        private IDictionary<Programmer, TimeSpan> GetTotalSecondsByProgrammer(PairingSession session)
+        private IDictionary<Programmer, TimeSpan> GetTotalTimeByProgrammer(PairingSession session)
         {
-            var totalSecondsInSessionByProgrammer = new Dictionary<Programmer, TimeSpan>();
+            var totalTimeInSessionByProgrammer = new Dictionary<Programmer, TimeSpan>();
             foreach (var interval in session.Intervals)
             {
-                if (totalSecondsInSessionByProgrammer.ContainsKey(interval.Programmer))
-                    totalSecondsInSessionByProgrammer[interval.Programmer] += interval.Length;
+                if (totalTimeInSessionByProgrammer.ContainsKey(interval.Programmer))
+                    totalTimeInSessionByProgrammer[interval.Programmer] += interval.Length;
                 else
-                    totalSecondsInSessionByProgrammer.Add(interval.Programmer, interval.Length);
+                    totalTimeInSessionByProgrammer.Add(interval.Programmer, interval.Length);
             }
-            return totalSecondsInSessionByProgrammer;
+            return totalTimeInSessionByProgrammer;
         }
 
-        private IDictionary<Programmer, int> GetPercentageOfSessionByProgrammer(IDictionary<Programmer, TimeSpan> totalSecondsInSessionByProgrammer, PairingSession session)
+        private IDictionary<Programmer, Statistic> GetPercentageOfSessionByProgrammer(IDictionary<Programmer, TimeSpan> totalSecondsInSessionByProgrammer, PairingSession session)
         {
-            var percentageOfSessionByProgrammer = new Dictionary<Programmer, int>();
+            var percentageOfSessionByProgrammer = new Dictionary<Programmer, Statistic>();
 
             //TODO: Clean this up
             TimeSpan timeControlledByNeither = new TimeSpan();
@@ -36,7 +36,11 @@ namespace PairTracker.Model
             var totalSecondsControlledByAProgrammer = session.Length - timeControlledByNeither;
             foreach (var item in totalSecondsInSessionByProgrammer)
                 if (item.Key != Programmer.Neither)
-                    percentageOfSessionByProgrammer.Add(item.Key, (int)Math.Round((double)100 * (item.Value.TotalSeconds / totalSecondsControlledByAProgrammer.TotalSeconds)));
+                {
+                    int percentage =  (int)Math.Round((double)100 * (item.Value.TotalSeconds / totalSecondsControlledByAProgrammer.TotalSeconds));
+                    Statistic statistic = new Statistic(percentage, item.Value);
+                    percentageOfSessionByProgrammer.Add(item.Key, statistic);
+                }
 
             return percentageOfSessionByProgrammer;
         }

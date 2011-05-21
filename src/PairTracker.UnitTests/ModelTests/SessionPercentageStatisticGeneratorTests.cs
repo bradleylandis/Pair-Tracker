@@ -20,7 +20,7 @@ namespace PairTracker.UnitTests.ModelTests
             var results = statGenerator.Generate(session);
 
             Assert.That(results.Count, Is.EqualTo(1));
-            Assert.That(results[programmerJoe], Is.EqualTo(100));
+            Assert.That(results[programmerJoe].Percentage, Is.EqualTo(100));
         }
 
         [Test]
@@ -37,8 +37,8 @@ namespace PairTracker.UnitTests.ModelTests
             var results = statGenerator.Generate(session);
 
             Assert.That(results.Count, Is.EqualTo(2));
-            Assert.That(results[programmerJoe], Is.EqualTo(50));
-            Assert.That(results[programmerBob], Is.EqualTo(50));
+            Assert.That(results[programmerJoe].Percentage, Is.EqualTo(50));
+            Assert.That(results[programmerBob].Percentage, Is.EqualTo(50));
         }
 
         [Test]
@@ -56,8 +56,8 @@ namespace PairTracker.UnitTests.ModelTests
             var results = statGenerator.Generate(session);
 
             Assert.That(results.Count, Is.EqualTo(2));
-            Assert.That(results[programmerJoe], Is.EqualTo(50));
-            Assert.That(results[programmerBob], Is.EqualTo(50));
+            Assert.That(results[programmerJoe].Percentage, Is.EqualTo(50));
+            Assert.That(results[programmerBob].Percentage, Is.EqualTo(50));
         }
 
         [Test]
@@ -74,7 +74,7 @@ namespace PairTracker.UnitTests.ModelTests
             var results = statGenerator.Generate(session);
 
             Assert.That(results.Count, Is.EqualTo(1));
-            Assert.That(results[programmerJoe], Is.EqualTo(100));
+            Assert.That(results[programmerJoe].Percentage, Is.EqualTo(100));
         }
 
         [Test]
@@ -91,8 +91,8 @@ namespace PairTracker.UnitTests.ModelTests
             var results = statGenerator.Generate(session);
 
             Assert.That(results.Count, Is.EqualTo(2));
-            Assert.That(results[programmerJoe], Is.EqualTo(12));
-            Assert.That(results[programmerBob], Is.EqualTo(88));
+            Assert.That(results[programmerJoe].Percentage, Is.EqualTo(12));
+            Assert.That(results[programmerBob].Percentage, Is.EqualTo(88));
         }
     }
 }

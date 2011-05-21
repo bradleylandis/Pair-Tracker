@@ -29,7 +29,7 @@ namespace PairTracker.View
         void ResetController();
 
         void DisplayIntervals(IEnumerable<Interval> intervals);
-        void DisplayStats(IDictionary<Programmer, int> stats);
+        void DisplayStats(IDictionary<Programmer, Statistic> stats);
 
         void Close();
         void ConfirmClose();

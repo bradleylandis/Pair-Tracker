@@ -190,16 +190,18 @@ namespace PairTracker.UI
             IntervalTimer.Tick -= new EventHandler(IntervalTimer_Tick);
         }
 
-        public void DisplayStats(IDictionary<Programmer, int> stats)
+        public void DisplayStats(IDictionary<Programmer, Statistic> stats)
         {
             statistics.Items.Clear();
             foreach (var stat in stats)
                 DisplayStat(stat);
         }
 
-        private void DisplayStat(KeyValuePair<Programmer, int> stat)
+        private void DisplayStat(KeyValuePair<Programmer, Statistic> stat)
         {
-            statistics.Items.Add(stat.Key.Name).SubItems.Add(stat.Value.ToString());
+            var item = statistics.Items.Add(stat.Key.Name);
+            item.SubItems.Add(stat.Value.Percentage.ToString());
+            item.SubItems.Add(stat.Value.TotalTime.ToString());
         }
 
         private void exitToolStripMenuItem_Click(object sender, EventArgs e)

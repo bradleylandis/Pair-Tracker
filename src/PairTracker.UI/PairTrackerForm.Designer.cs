@@ -52,6 +52,7 @@
             this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.pauseButton = new System.Windows.Forms.Button();
+            this.columnHeader7 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.statusStrip1.SuspendLayout();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -155,7 +156,8 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.statistics.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.columnHeader5,
-            this.columnHeader6});
+            this.columnHeader6,
+            this.columnHeader7});
             this.statistics.Location = new System.Drawing.Point(15, 152);
             this.statistics.Name = "statistics";
             this.statistics.Size = new System.Drawing.Size(375, 155);
@@ -261,6 +263,11 @@
             this.pauseButton.UseVisualStyleBackColor = true;
             this.pauseButton.Click += new System.EventHandler(this.pauseButton_Click);
             // 
+            // columnHeader7
+            // 
+            this.columnHeader7.Text = "Total Time";
+            this.columnHeader7.Width = 85;
+            // 
             // PairTrackerForm
             // 
             this.AcceptButton = this.startButton;
@@ -321,6 +328,7 @@
         private System.Windows.Forms.ToolStripMenuItem helpToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem aboutToolStripMenuItem;
         private System.Windows.Forms.Button pauseButton;
+        private System.Windows.Forms.ColumnHeader columnHeader7;
     }
 }
 

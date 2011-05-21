@@ -69,7 +69,7 @@
     <Compile Include="Model\PairingSessionImpl.cs" />
     <Compile Include="Model\RunningPairingSession.cs" />
     <Compile Include="Model\SessionPercentageStatisticGenerator.cs" />
-    <Compile Include="Model\StatisticFormatter.cs" />
+    <Compile Include="Model\Statistic.cs" />
     <Compile Include="Model\StatisticGenerator.cs" />
     <Compile Include="Model\StoppedPairingSession.cs" />
     <Compile Include="Model\UnstartedPairingSession.cs" />
