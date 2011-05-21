@@ -9,8 +9,7 @@
 obj/
 
 App_Data/
-specresults/
+temp/
 partcover.driver.log
 partcover-browser-settings.xml
 partcover-browser-settings-integration.xml
-temp/

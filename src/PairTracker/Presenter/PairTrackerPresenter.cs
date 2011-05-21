@@ -49,14 +49,15 @@ namespace PairTracker.Presenter
         private void Close(object sender, CloseButtonClickedEventArgs e)
         {
             if (e.ConfirmationStatus == ConfirmationStatus.Confirmed || !model.IsRunning)
-            {
-                EndSession();
-                view.Close();
-            }
+                EndSessionAndCloseView();
             else if (e.ConfirmationStatus == ConfirmationStatus.Unknown)
-            {
                 view.ConfirmClose();
-            }
+        }
+
+        private void EndSessionAndCloseView()
+        {
+            EndSession();
+            view.Close();
         }
 
         private void StartSession(object sender, StartButtonClickedEventArgs e) 

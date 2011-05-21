@@ -27,11 +27,11 @@ namespace PairTracker.Model
 
         public void SwitchController(Programmer programmer)
         {
-            if (programmer != pairingSession.CurrentInterval.Programmer)
-            {
-                pairingSession.StopCurrentInterval();
-                pairingSession.StartNewInterval(programmer);
-            }
+            if (programmer == pairingSession.CurrentInterval.Programmer)
+                return;
+
+            pairingSession.StopCurrentInterval();
+            pairingSession.StartNewInterval(programmer);
         }
 
         public void Pause()
