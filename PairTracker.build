@@ -25,7 +25,7 @@
   <property name="testdox-dir" value="${tools-dir}\testdox" />
 
   <target name="run">
-    <call target="run-testdox"/>
+    <call target="commit-locally"/>
   </target>
 
   <target name="build-solution">
