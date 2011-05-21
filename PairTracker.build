@@ -58,7 +58,7 @@ output="${temp-dir}\TestResult.txt">
       <arg line="--log 0" />
       <arg line="--target &quot;${nunit-dir}\${nunit-runner}&quot;"/>
       <arg line="--target-work-dir &quot;${nunit-dir}&quot;"/>
-      <arg line="--target-args &quot;${test-assembly-path}&quot;"/>
+      <arg line="--target-args &quot;${test-assembly-path}&quot; /xml:&quot;${temp-dir}\TestResult.xml&quot;"/>
       <arg line="--output &quot;${temp-dir}\partcover.xml&quot;"/>
       <arg line="--include [PairTracker]*" />
     </exec>
