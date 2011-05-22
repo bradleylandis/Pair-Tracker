@@ -1,8 +1,7 @@
-﻿using PairTracker.Model;
-using PairTracker.View;
-using System.Collections.Generic;
-using System;
+﻿using System;
+using PairTracker.Model;
 using PairTracker.Repository;
+using PairTracker.View;
 
 namespace PairTracker.Presenter
 {

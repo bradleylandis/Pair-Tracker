@@ -1,12 +1,11 @@
-﻿using NUnit.Framework;
-using PairTracker.Presenter;
-using PairTracker.View;
+﻿using System;
 using Moq;
+using NUnit.Framework;
 using PairTracker.Model;
-using System;
-using PairTracker.UnitTests.Builders;
+using PairTracker.Presenter;
 using PairTracker.Repository;
-using PairTracker.UnitTests.TestDoubles;
+using PairTracker.UnitTests.Builders;
+using PairTracker.View;
 
 namespace PairTracker.UnitTests.PresenterTests
 {

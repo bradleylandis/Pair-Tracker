@@ -1,10 +1,9 @@
-﻿using RawInput;
-using PairTracker.View;
-using PairTracker.Model;
-using System.Windows.Forms;
-using System;
+﻿using System;
 using System.Collections.Generic;
-using PairTracker.Presenter;
+using System.Windows.Forms;
+using PairTracker.Model;
+using PairTracker.View;
+using RawInput;
 
 namespace PairTracker.UI
 {

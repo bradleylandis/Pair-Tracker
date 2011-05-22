@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using PairTracker.View;
+﻿using PairTracker.View;
 
 namespace PairTracker.Presenter
 {

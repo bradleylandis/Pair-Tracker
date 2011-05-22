@@ -1,11 +1,10 @@
-﻿using Ninject.Modules;
-using PairTracker.View;
-using PairTracker.Model;
-using PairTracker.Repository;
-using Raven.Client.Document;
-using System.Configuration;
+﻿using System.Configuration;
 using System.Windows.Forms;
+using Ninject.Modules;
+using PairTracker.Model;
 using PairTracker.Presenter;
+using PairTracker.Repository;
+using PairTracker.View;
 
 namespace PairTracker.UI
 {

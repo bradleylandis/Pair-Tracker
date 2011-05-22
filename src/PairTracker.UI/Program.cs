@@ -1,8 +1,7 @@
-﻿using System.Windows.Forms;
-using PairTracker.View;
-using PairTracker.Presenter;
+﻿using System;
+using System.Windows.Forms;
 using Ninject;
-using System;
+using PairTracker.Presenter;
 using Raven.Client.Document;
 
 namespace PairTracker.UI

@@ -1,15 +1,13 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using TechTalk.SpecFlow;
-using PairTracker.Model;
-using NUnit.Framework;
 using System.Threading;
-using PairTracker.Presenter;
 using Moq;
-using PairTracker.View;
+using NUnit.Framework;
+using PairTracker.Model;
+using PairTracker.Presenter;
 using PairTracker.Repository;
+using PairTracker.View;
+using TechTalk.SpecFlow;
 
 namespace PairTracker.IntegrationTests.StepDefinitions
 {

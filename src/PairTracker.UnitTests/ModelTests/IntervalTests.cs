@@ -1,7 +1,7 @@
-﻿using NUnit.Framework;
-using PairTracker.UnitTests.TestDoubles;
+﻿using System;
+using NUnit.Framework;
 using PairTracker.Model;
-using System;
+using PairTracker.UnitTests.TestDoubles;
 
 namespace PairTracker.UnitTests.ModelTests
 {

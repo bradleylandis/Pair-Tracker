@@ -1,6 +1,6 @@
-﻿using PairTracker.Model;
-using System;
+﻿using System;
 using System.Collections.Generic;
+using PairTracker.Model;
 
 namespace PairTracker.View
 {

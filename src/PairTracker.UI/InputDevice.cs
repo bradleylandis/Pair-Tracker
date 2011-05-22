@@ -1,6 +1,5 @@
 using System;
 using System.Collections;
-using System.IO;
 using System.Runtime.InteropServices;
 using System.Windows.Forms;
 using Microsoft.Win32;

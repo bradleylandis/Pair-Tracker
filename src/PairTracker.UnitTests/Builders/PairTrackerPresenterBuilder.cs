@@ -1,8 +1,8 @@
-﻿using PairTracker.Presenter;
-using PairTracker.View;
-using PairTracker.Model;
+﻿using PairTracker.Model;
+using PairTracker.Presenter;
 using PairTracker.Repository;
 using PairTracker.UnitTests.TestDoubles;
+using PairTracker.View;
 
 namespace PairTracker.UnitTests.Builders
 {

@@ -1,5 +1,5 @@
-﻿using PairTracker.Model;
-using System;
+﻿using System;
+using PairTracker.Model;
 
 namespace PairTracker.UnitTests.TestDoubles
 {

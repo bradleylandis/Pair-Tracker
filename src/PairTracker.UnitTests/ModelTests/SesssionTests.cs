@@ -1,10 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using NUnit.Framework;
 using PairTracker.Model;
-using Moq;
 using PairTracker.UnitTests.TestDoubles;
 
 namespace PairTracker.UnitTests.ModelTests
