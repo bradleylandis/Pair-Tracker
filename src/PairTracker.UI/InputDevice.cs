@@ -305,9 +305,9 @@ namespace RawInput
 
             //Retrieve the desired information and set isKeyboard
             string deviceDesc  = (string)OurKey.GetValue( "DeviceDesc" );
-            string deviceClass = (string)OurKey.GetValue( "Class" );
+            string deviceClassGUID = (string)OurKey.GetValue( "ClassGUID" );
             
-            if( deviceClass.ToUpper().Equals( "KEYBOARD" ))
+            if(deviceClassGUID.Equals("{4d36e96b-e325-11ce-bfc1-08002be10318}", StringComparison.InvariantCultureIgnoreCase))
             {
                 isKeyboard = true;
             }
